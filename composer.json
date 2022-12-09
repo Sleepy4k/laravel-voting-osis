@@ -35,7 +35,13 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/DateFormatter.php",
+            "app/Helpers/RupiahFormatter.php",
+            "app/Helpers/NullToEmptyString.php",
+            "app/Helpers/FileSizeFormatter.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
