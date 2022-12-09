@@ -23,12 +23,10 @@ use Illuminate\Support\Facades\Route;
 | Remember not to list anything of importance, use authenticate route instead.
 */
 
-Route::get('/', function() {
-    return response()->json([
-        'status' => 'OK',
-        'message' => 'server maintenance'
-    ]);
-})->name('landing.index');
+Route::get('/', fn() => response()->json([
+    'status' => 'OK',
+    'message' => 'server maintenance'
+]))->name('landing.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -68,9 +66,7 @@ Route::middleware('auth:sanctum')->group(function() {
 | listed below this code will not function or listed properly.
 */
 
-Route::any('{any}', function() {
-    return response()->json([
-        'status' => 'OK',
-        'message' => 'endpoint not found'
-    ], 404);
-})->where('any', '.*')->name('fallback');
+Route::any('{any}', fn() => response()->json([
+    'status' => 'OK',
+    'message' => 'endpoint not found'
+], 404))->where('any', '.*')->name('fallback');

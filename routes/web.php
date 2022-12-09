@@ -24,9 +24,7 @@ use Illuminate\Support\Facades\Route;
 | Remember not to list anything of importance, use authenticate route instead.
 */
 
-Route::get('/', function() {
-    return view('welcome');
-})->name('landing.index');
+Route::get('/', fn() => view('welcome'))->name('landing.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +64,4 @@ Route::middleware('auth')->group(function() {
 | listed below this code will not function or listed properly.
 */
 
-Route::any('{any}', function() {
-    return view('errors.404');
-})->where('any', '.*')->name('fallback');
+Route::any('{any}', fn() => view('errors.404'))->where('any', '.*')->name('fallback');
