@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Web\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,10 +25,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function() {
-    return response()->json([
-        'status' => 'OK',
-        'message' => 'server maintenance'
-    ]);
+    return view('welcome');
 })->name('landing.index');
 
 /*
@@ -41,7 +39,7 @@ Route::get('/', function() {
 */
 
 Route::middleware('guest')->group(function() {
-    // Todo
+    Route::resource('login', Auth\LoginController::class, ['only' => ['index', 'store']]);
 });
 
 /*
@@ -55,5 +53,19 @@ Route::middleware('guest')->group(function() {
 */
 
 Route::middleware('auth')->group(function() {
-    // Todo
+    Route::resource('logout', Auth\LogoutController::class, ['only' => ['store']]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| Fallback Route
+|--------------------------------------------------------------------------
+| 
+| Please don't touch the code below unless you know what you're doing.
+| Also keep in mind to put this code at the bottom of the route for any route
+| listed below this code will not function or listed properly.
+*/
+
+Route::any('{any}', function() {
+    return view('errors.404');
+})->where('any', '.*')->name('fallback');
