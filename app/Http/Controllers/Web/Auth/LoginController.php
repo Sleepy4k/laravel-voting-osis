@@ -25,7 +25,7 @@ class LoginController extends WebController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\Web\Auth\Login\StoreRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request, LoginService $service)

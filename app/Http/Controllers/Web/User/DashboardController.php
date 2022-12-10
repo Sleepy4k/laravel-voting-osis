@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Web\User;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\WebController;
 use App\Services\Web\User\DashboardService;
+use App\Http\Requests\Web\User\Dashboard\StoreRequest;
 
 class DashboardController extends WebController
 {
@@ -24,17 +24,15 @@ class DashboardController extends WebController
     }
 
     /**
-     * Update the specified resource in storage.
+     * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Services\Web\User\DashboardService  $service
-     * @param  int  $id
+     * @param  \App\Http\Requests\Web\User\Dashboard\StoreRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, DashboardService $service, $id)
+    public function store(StoreRequest $request, DashboardService $service)
     {
         try {
-            return $service->update($request, $id) ? view('pages.user.success') : back();
+            return $service->store($request->validated()) ? view('pages.user.success') : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
