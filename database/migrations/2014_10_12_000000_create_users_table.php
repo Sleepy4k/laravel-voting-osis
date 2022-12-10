@@ -28,7 +28,7 @@ return new class extends Migration
         $voting_list = config()->get('voting.list');
         $voting_default = config()->get('voting.default');
 
-        if (empty($language)) {
+        if (empty($voting_list) or empty($voting_default)) {
             throw new \Exception('Error: config/voting.php not found and defaults could not be merged. Please publish the package configuration before proceeding, or drop the tables manually.');
         }
 
