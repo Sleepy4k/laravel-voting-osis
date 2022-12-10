@@ -22,7 +22,13 @@
                                     <div class="card-header text-center fw-bold">
                                         {{ $candidate->chairman }} & {{ $candidate->vice_chairman }}
                                     </div>
-                                    <img src="{{ url('/foto_calon/' . $candidate->image) }}" class="card-img-top" alt="...">
+
+                                    @if (file_exists(public_path('storage/images/' . $candidate->image)))
+                                        <img src="{{ asset('storage/images/' . $candidate->image) }}" class="card-img-top" alt="{{ $candidate->image }}">
+                                    @else
+                                        <img src="{{ asset('image/candidate.jpg') }}" class="card-img-top" alt="candidate.jpg">
+                                    @endif
+                                    
                                     <div class="card-body p-0">
                                         <div class="accordion accordion-flush" id="accordionFlushExample">
                                             <div class="accordion-item">
@@ -66,10 +72,12 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <form class="d-grid gap-2 p-3" action="{{ route('main.dashboard.update', $candidate->id) }}" method="POST">
+                                        <form class="d-grid gap-2 p-3" action="{{ route('main.dashboard.store', $candidate->id) }}" method="POST">
                                             @csrf
-                                            @method('PUT')
                                             
+                                            <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
+                                            <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
+
                                             <button class="btn btn-primary">Vote</button>
                                         </form>
                                     </div>
@@ -82,14 +90,6 @@
                         <h4 class="alert-heading">Anda Sudah Melakukan Voting</h4>
                         <p>Jika anda merasa belum melakukan voting, silahkan hubungin panitia.</p>
                     </div>
-                    
-                    <a class="btn btn-lg btn-outline-primary mt-3" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="icon-mid bi bi-box-arrow-left me-2"></i>{{ __('Logout') }}
-                    </a>
-
-                    <form class="d-none" id="logout-form" action="{{ route('logout.store') }}" method="POST">
-                        @csrf
-                    </form>
                 @endif
             </div>
         </div>
