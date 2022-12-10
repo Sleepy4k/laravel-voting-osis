@@ -10,11 +10,11 @@ interface EloquentInterface
     /**
      * Get all models.
      *
-     * @param array $columns
-     * @param array $relations
-     * @param array $wheres
-     * @param string $orderBy
-     * @param bool $latest
+     * @param  array  $columns
+     * @param  array  $relations
+     * @param  array  $wheres
+     * @param  string  $orderBy
+     * @param  bool  $latest
      * @return Collection
      */
     public function all(array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true): Collection;
@@ -22,12 +22,12 @@ interface EloquentInterface
     /**
      * Get all in pagination models.
      *
-     * @param int $paginate
-     * @param array $columns
-     * @param array $relations
-     * @param array $wheres
-     * @param string $orderBy
-     * @param bool $latest
+     * @param  int  $paginate
+     * @param  array  $columns
+     * @param  array  $relations
+     * @param  array  $wheres
+     * @param  string  $orderBy
+     * @param  bool  $latest
      * @return Collection
      */
     public function paginate(int $paginate = 10, array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true);
@@ -42,10 +42,10 @@ interface EloquentInterface
     /**
      * Find model by id.
      *
-     * @param int $modelId
-     * @param array $columns
-     * @param array $relations
-     * @param array $appends
+     * @param  int  $modelId
+     * @param  array  $columns
+     * @param  array  $relations
+     * @param  array  $appends
      * @return Model
      */
     public function findById(int $modelId, array $columns = ['*'], array $relations = [], array $appends = []): ?Model;
@@ -53,10 +53,10 @@ interface EloquentInterface
     /**
      * Find model by custom id.
      *
-     * @param array $wheres
-     * @param array $columns
-     * @param array $relations
-     * @param array $appends
+     * @param  array  $wheres
+     * @param  array  $columns
+     * @param  array  $relations
+     * @param  array  $appends
      * @return Model
      */
     public function findByCustomId(array $wheres = [], array $columns = ['*'], array $relations = []): ?Model;
@@ -64,7 +64,7 @@ interface EloquentInterface
     /**
      * Find trashed model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function findTrashedById(int $modelId): ?Model;
@@ -72,7 +72,7 @@ interface EloquentInterface
     /**
      * Find trashed model by custom id.
      *
-     * @param array $wheres
+     * @param  array  $wheres
      * @return Model
      */
     public function findTrashedByCustomId(array $wheres = []): ?Model;
@@ -80,7 +80,7 @@ interface EloquentInterface
     /**
      * Find only trashed model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function findOnlyTrashedById(int $modelId): ?Model;
@@ -88,7 +88,7 @@ interface EloquentInterface
     /**
      * Find only trashed model by custom id.
      *
-     * @param array $wheres
+     * @param  array  $wheres
      * @return Model
      */
     public function findOnlyTrashedByCustomId(array $wheres = []): ?Model;
@@ -96,7 +96,7 @@ interface EloquentInterface
     /**
      * Create a model.
      *
-     * @param array $payload
+     * @param  array  $payload
      * @return Model
      */
     public function create(array $payload): ?Model;
@@ -104,8 +104,8 @@ interface EloquentInterface
     /**
      * Update existing model.
      *
-     * @param int $modelId
-     * @param array $payload
+     * @param  int  $modelId
+     * @param  array  $payload
      * @return Model
      */
     public function update(int $modelId, array $payload): bool;
@@ -113,7 +113,7 @@ interface EloquentInterface
     /**
      * Delete model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function deleteById(int $modelId): bool;
@@ -121,7 +121,7 @@ interface EloquentInterface
     /**
      * Restore model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function restoreById(int $modelId): bool;
@@ -129,7 +129,7 @@ interface EloquentInterface
     /**
      * Permanently delete model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function permanentlyDeleteById(int $modelId): bool;

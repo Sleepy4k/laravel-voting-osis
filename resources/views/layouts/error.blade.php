@@ -33,7 +33,11 @@
                             @endif
                         </p>
 
-                        <a href="{{ route('landing.index') }}" class="btn btn-lg btn-outline-primary mt-3">Go Home</a>
+                        @hasSection('button')
+                            @yield('button')
+                        @else
+                            <a href="{{ route('main.dashboard.index') }}" class="btn btn-lg btn-outline-primary mt-3">Go Home</a>
+                        @endif
                     </div>
                 </div>
             </div>

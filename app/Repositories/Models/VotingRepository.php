@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Models;
 
-use Spatie\Activitylog\Models\Activity;
+use App\Models\Voting;
 use Illuminate\Database\Eloquent\Model;
-use App\Contracts\Models\AuditInterface;
 use App\Repositories\EloquentRepository;
+use App\Contracts\Models\VotingInterface;
 
-class AuditRepository extends EloquentRepository implements AuditInterface
+class VotingRepository extends EloquentRepository implements VotingInterface
 {
     /**
      * @var Model
@@ -19,7 +19,7 @@ class AuditRepository extends EloquentRepository implements AuditInterface
      * 
      * @param  Model  $model
      */
-    public function __construct(Activity $model)
+    public function __construct(Voting $model)
     {
         $this->model = $model;
     }

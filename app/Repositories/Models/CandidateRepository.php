@@ -2,12 +2,12 @@
 
 namespace App\Repositories\Models;
 
-use Spatie\Activitylog\Models\Activity;
+use App\Models\Candidate;
 use Illuminate\Database\Eloquent\Model;
-use App\Contracts\Models\AuditInterface;
 use App\Repositories\EloquentRepository;
+use App\Contracts\Models\CandidateInterface;
 
-class AuditRepository extends EloquentRepository implements AuditInterface
+class CandidateRepository extends EloquentRepository implements CandidateInterface
 {
     /**
      * @var Model
@@ -19,7 +19,7 @@ class AuditRepository extends EloquentRepository implements AuditInterface
      * 
      * @param  Model  $model
      */
-    public function __construct(Activity $model)
+    public function __construct(Candidate $model)
     {
         $this->model = $model;
     }

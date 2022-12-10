@@ -15,13 +15,8 @@ class RoleSeeder extends Seeder
     public function run()
     {
         if (Role::count() == 0) {
-            $permissions = config()->get('permission.seeder.role.user');
-
-            if (empty($permissions)) {
-                throw new \Exception('Error: config/permission.php not found and defaults could not be merged. Please publish the package configuration before proceeding, or drop the tables manually.');
-            }
-
             $roles = config()->get('role.seeder.list');
+            $permissions = config()->get('permission.seeder.role.user');
 
             if (empty($roles)) {
                 throw new \Exception('Error: config/role.php not found and defaults could not be merged. Please publish the package configuration before proceeding, or drop the tables manually.');

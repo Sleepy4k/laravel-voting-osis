@@ -31,7 +31,7 @@ class LoginController extends WebController
     public function store(StoreRequest $request, LoginService $service)
     {
         try {
-            return $service->store($request->validated()) ? to_route('dashboard.index') : back();
+            return $service->store($request->validated()) ? to_route('main.dashboard.index') : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

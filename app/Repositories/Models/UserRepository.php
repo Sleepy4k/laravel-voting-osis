@@ -20,7 +20,7 @@ class UserRepository extends EloquentRepository implements UserInterface
     /**
      * Base respository constructor
      * 
-     * @param Model $model
+     * @param  Model  $model
      */
     public function __construct(User $model)
     {
@@ -30,7 +30,7 @@ class UserRepository extends EloquentRepository implements UserInterface
     /**
      * Create a model.
      *
-     * @param array $payload
+     * @param  array  $payload
      * @return Model
      */
     public function create(array $payload): ?Model
@@ -55,8 +55,8 @@ class UserRepository extends EloquentRepository implements UserInterface
     /**
      * Update existing model.
      *
-     * @param int $modelId
-     * @param array $payload
+     * @param  int  $modelId
+     * @param  array  $payload
      * @return Model
      */
     public function update(int $modelId, array $payload): bool

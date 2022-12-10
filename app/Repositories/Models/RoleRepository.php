@@ -17,7 +17,7 @@ class RoleRepository extends EloquentRepository implements RoleInterface
     /**
      * Base respository constructor
      * 
-     * @param Model $model
+     * @param  Model  $model
      */
     public function __construct(Role $model)
     {
@@ -27,7 +27,7 @@ class RoleRepository extends EloquentRepository implements RoleInterface
     /**
      * Create a model.
      *
-     * @param array $payload
+     * @param  array  $payload
      * @return Model
      */
     public function create(array $payload): ?Model
@@ -44,8 +44,8 @@ class RoleRepository extends EloquentRepository implements RoleInterface
     /**
      * Update existing model.
      *
-     * @param int $modelId
-     * @param array $payload
+     * @param  int  $modelId
+     * @param  array  $payload
      * @return Model
      */
     public function update(int $modelId, array $payload): bool

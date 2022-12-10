@@ -7,9 +7,10 @@ use App\Services\WebService;
 class LoginService extends WebService
 {
     /**
-     * Store function.
+     * Store a newly created resource in storage.
      * 
      * @param $request
+     * @return boolean
      */
     public function store($request)
     {

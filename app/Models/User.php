@@ -77,9 +77,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username',
-        'email',
+        'name',
+        'nis',
+        'grade',
         'language',
+        'voting_status',
         'password'
     ];
 
@@ -114,9 +116,11 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'username' => 'string',
-        'email' => 'string',
+        'name' => 'string',
+        'nis' => 'string',
+        'grade' => 'string',
         'language' => 'string',
+        'voting_status' => 'string',
         'password' => 'string'
     ];
 
@@ -128,7 +132,7 @@ class User extends Authenticatable
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
-                            ->logOnly(['username','email','language'])
+                            ->logOnly(['name','nis','grade','language','voting_status'])
                             ->logOnlyDirty()
                             ->useLogName('model')
                             ->setDescriptionForEvent(fn(string $eventName) => trans('model.activity.description', ['model' => $this->table, 'event' => $eventName]))
