@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Web\Auth\Login;
 
-use App\Http\Requests\ApiRequest;
+use App\Http\Requests\WebRequest;
 
-class StoreRequest extends ApiRequest
+class StoreRequest extends WebRequest
 {
     /**
      * Get the validation rules that apply to the request.
