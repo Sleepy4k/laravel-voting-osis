@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Web\Auth;
+use App\Http\Controllers\Web\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 | Remember not to list anything of importance, use authenticate route instead.
 */
 
-Route::get('/', fn() => view('welcome'))->name('landing.index');
+// Route::get('/', fn() => view('welcome'))->name('landing.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,12 @@ Route::middleware('guest')->group(function() {
 
 Route::middleware('auth')->group(function() {
     Route::resource('logout', Auth\LogoutController::class, ['only' => ['store']]);
+
+    // User Route
+    Route::as('main.')->middleware('role:user')->group(function() {
+        Route::get('/', [User\DashboardController::class, 'index'])->name('dashboard.index');
+        Route::put('vote/{id}', [User\DashboardController::class, 'update'])->name('dashboard.update');
+    });
 });
 
 /*
