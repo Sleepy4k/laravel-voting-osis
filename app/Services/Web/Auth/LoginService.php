@@ -9,7 +9,7 @@ class LoginService extends WebService
     /**
      * Store a newly created resource in storage.
      * 
-     * @param $request
+     * @param  array  $request
      * @return boolean
      */
     public function store($request)
