@@ -17,7 +17,7 @@ class LanguageRepository extends EloquentRepository implements LanguageInterface
     /**
      * Base respository constructor
      * 
-     * @param Model $model
+     * @param  Model  $model
      */
     public function __construct(LanguageLine $model)
     {
@@ -27,7 +27,7 @@ class LanguageRepository extends EloquentRepository implements LanguageInterface
     /**
      * Create a model.
      *
-     * @param array $payload
+     * @param  array  $payload
      * @return Model
      */
     public function create(array $payload): ?Model
@@ -52,8 +52,8 @@ class LanguageRepository extends EloquentRepository implements LanguageInterface
     /**
      * Update existing model.
      *
-     * @param int $modelId
-     * @param array $payload
+     * @param  int  $modelId
+     * @param  array  $payload
      * @return Model
      */
     public function update(int $modelId, array $payload): bool

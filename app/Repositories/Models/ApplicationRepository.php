@@ -17,7 +17,7 @@ class ApplicationRepository extends EloquentRepository implements ApplicationInt
     /**
      * Base respository constructor
      * 
-     * @param Model $model
+     * @param  Model  $model
      */
     public function __construct(Application $model)
     {

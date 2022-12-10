@@ -16,7 +16,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Base respository constructor.
      * 
-     * @param Model $model
+     * @param  Model  $model
      */
     public function __construct(Model $model)
     {
@@ -26,11 +26,11 @@ class EloquentRepository implements EloquentInterface
     /**
      * Get all models.
      *
-     * @param array $columns
-     * @param array $relations
-     * @param array $wheres
-     * @param string $orderBy
-     * @param bool $latest
+     * @param  array  $columns
+     * @param  array  $relations
+     * @param  array  $wheres
+     * @param  string  $orderBy
+     * @param  bool  $latest
      * @return Collection
      */
     public function all(array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true): Collection
@@ -55,12 +55,12 @@ class EloquentRepository implements EloquentInterface
     /**
      * Get all in pagination models.
      *
-     * @param int $paginate
-     * @param array $columns
-     * @param array $relations
-     * @param array $wheres
-     * @param string $orderBy
-     * @param bool $latest
+     * @param  int  $paginate
+     * @param  array  $columns
+     * @param  array  $relations
+     * @param  array  $wheres
+     * @param  string  $orderBy
+     * @param  bool  $latest
      * @return Collection
      */
     public function paginate(int $paginate = 10, array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true)
@@ -99,10 +99,10 @@ class EloquentRepository implements EloquentInterface
     /**
      * Find model by id.
      *
-     * @param int $modelId
-     * @param array $columns
-     * @param array $relations
-     * @param array $appends
+     * @param  int  $modelId
+     * @param  array  $columns
+     * @param  array  $relations
+     * @param  array  $appends
      * @return Model
      */
     public function findById(int $modelId, array $columns = ['*'], array $relations = [], array $appends = []): ?Model
@@ -113,10 +113,10 @@ class EloquentRepository implements EloquentInterface
     /**
      * Find model by custom id.
      *
-     * @param array $wheres
-     * @param array $columns
-     * @param array $relations
-     * @param array $appends
+     * @param  array  $wheres
+     * @param  array  $columns
+     * @param  array  $relations
+     * @param  array  $appends
      * @return Model
      */
     public function findByCustomId(array $wheres = [], array $columns = ['*'], array $relations = [], array $appends = []): ?Model
@@ -127,7 +127,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Find trashed model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function findTrashedById(int $modelId): ?Model
@@ -138,7 +138,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Find trashed model by custom id.
      *
-     * @param array $wheres
+     * @param  array  $wheres
      * @return Model
      */
     public function findTrashedByCustomId(array $wheres = []): ?Model
@@ -149,7 +149,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Find only trashed model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function findOnlyTrashedById(int $modelId): ?Model
@@ -160,7 +160,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Find only trashed model by custom id.
      *
-     * @param array $wheres
+     * @param  array  $wheres
      * @return Model
      */
     public function findOnlyTrashedByCustomId(array $wheres = []): ?Model
@@ -171,7 +171,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Create a model.
      *
-     * @param array $payload
+     * @param  array  $payload
      * @return Model
      */
     public function create(array $payload): ?Model
@@ -188,8 +188,8 @@ class EloquentRepository implements EloquentInterface
     /**
      * Update existing model.
      *
-     * @param int $modelId
-     * @param array $payload
+     * @param  int  $modelId
+     * @param  array  $payload
      * @return Model
      */
     public function update(int $modelId, array $payload): bool
@@ -206,7 +206,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Delete model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function deleteById(int $modelId): bool
@@ -221,7 +221,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Restore model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function restoreById(int $modelId): bool
@@ -236,7 +236,7 @@ class EloquentRepository implements EloquentInterface
     /**
      * Permanently delete model by id.
      *
-     * @param int $modelId
+     * @param  int  $modelId
      * @return Model
      */
     public function permanentlyDeleteById(int $modelId): bool
