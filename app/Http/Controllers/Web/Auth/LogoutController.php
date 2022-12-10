@@ -19,7 +19,7 @@ class LogoutController extends WebController
         try {
             $service->store($request);
     
-            return to_route('landing.index');
+            return to_route('main.dashboard.index');
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
