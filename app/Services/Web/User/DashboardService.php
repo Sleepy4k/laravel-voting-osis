@@ -19,25 +19,20 @@ class DashboardService extends WebService
     }
 
     /**
-     * Update the specified resource in storage.
+     * Store a newly created resource in storage.
      * 
      * @param  array  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return boolean
      */
-    public function update($request, $id)
+    public function store($request)
     {
-        $user = auth()->user();
-
-        if ($user->voting_status == 'false') {
-            $this->userInterface->update($user->id, [
+        if (auth()->user()->voting_status == 'false') {
+            $this->votingInterface->create($request);
+            $this->userInterface->update($request['user_id'], [
                 'voting_status' => 'true'
             ]);
 
-            $this->votingInterface->create([
-                'user_id' => $user->id,
-                'candidate_id' => $id
-            ]);
+            toast()->success('Kamu berhasil memilih kandidat nomor ' . $request['candidate_id'], 'System');
 
             return true;
         }

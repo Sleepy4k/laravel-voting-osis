@@ -17,7 +17,9 @@ class WebController extends Controller
     {
         $this->sendReportLog('error', $error->getMessage());
 
-        toastr()->error('System having trouble, please try again later', 'System');
+        if (config('app.env') == 'local') {
+            toastr()->error($error->getMessage(), 'System');
+        }
 
         return back();
     }

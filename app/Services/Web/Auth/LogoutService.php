@@ -10,7 +10,7 @@ class LogoutService extends WebService
     /**
      * Store a newly created resource in storage.
      * 
-     * @param Illuminate\Http\Request $request
+     * @param  Illuminate\Http\Request  $request
      * @return void
      */
     public function store(Request $request)

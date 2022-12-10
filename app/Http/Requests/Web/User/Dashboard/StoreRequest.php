@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Web\Auth\Login;
+namespace App\Http\Requests\Web\User\Dashboard;
 
 use App\Http\Requests\WebRequest;
 
@@ -14,8 +14,8 @@ class StoreRequest extends WebRequest
     public function rules()
     {
         return [
-            'nis' => ['required','numeric','exists:users,nis'],
-            'password' => ['required','string','max:255']
+            'user_id' => ['required','numeric','exists:users,id'],
+            'candidate_id' => ['required','numeric','exists:candidates,id']
         ];
     }
 }

@@ -57,7 +57,7 @@ Route::middleware('auth')->group(function() {
     // User Route
     Route::as('main.')->middleware('role:user')->group(function() {
         Route::get('/', [User\DashboardController::class, 'index'])->name('dashboard.index');
-        Route::put('vote/{id}', [User\DashboardController::class, 'update'])->name('dashboard.update');
+        Route::post('vote/{id}', [User\DashboardController::class, 'store'])->name('dashboard.store');
     });
 });
 
