@@ -15,7 +15,7 @@ class StoreRequest extends WebRequest
     {
         return [
             'nis' => ['required','numeric','exists:users,nis'],
-            'password' => ['required','string','max:255']
+            'password' => ['required','string','min:8','max:255']
         ];
     }
 }
