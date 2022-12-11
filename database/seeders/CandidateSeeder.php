@@ -15,7 +15,7 @@ class CandidateSeeder extends Seeder
     public function run()
     {
         if (Candidate::count() == 0) {
-            $grades = Candidate::factory(10)->make();
+            $grades = Candidate::factory(2)->make();
 
             Candidate::insert($grades->toArray());
         }
