@@ -31,9 +31,10 @@ class EloquentRepository implements EloquentInterface
      * @param  array  $wheres
      * @param  string  $orderBy
      * @param  bool  $latest
+     * @param  array  $roles
      * @return Collection
      */
-    public function all(array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true): Collection
+    public function all(array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true, array $roles = []): Collection
     {
         try {
             $model = $this->model->with($relations);
@@ -44,6 +45,10 @@ class EloquentRepository implements EloquentInterface
 
             if (!empty($wheres)) {
                 $model->where($wheres);
+            }
+
+            if (!empty($roles)) {
+                $model->role($roles);
             }
 
             return $model->get($columns);
@@ -61,9 +66,10 @@ class EloquentRepository implements EloquentInterface
      * @param  array  $wheres
      * @param  string  $orderBy
      * @param  bool  $latest
+     * @param  array  $roles
      * @return Collection
      */
-    public function paginate(int $paginate = 10, array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true)
+    public function paginate(int $paginate = 10, array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true, array $roles = [])
     {
         try {
             $model = $this->model->with($relations);
@@ -74,6 +80,10 @@ class EloquentRepository implements EloquentInterface
 
             if (!empty($wheres)) {
                 $model->where($wheres);
+            }
+
+            if (!empty($roles)) {
+                $model->role($roles);
             }
 
             return $model->select($columns)->paginate($paginate);
