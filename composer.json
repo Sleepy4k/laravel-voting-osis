@@ -18,7 +18,7 @@
         "spatie/laravel-activitylog": "^4.7",
         "spatie/laravel-permission": "^5.7",
         "spatie/laravel-translation-loader": "^2.7",
-        "yajra/laravel-datatables": "^9.0",
+        "yajra/laravel-datatables": "9.0",
         "yoeunes/toastr": "^2.0"
     },
     "require-dev": {
