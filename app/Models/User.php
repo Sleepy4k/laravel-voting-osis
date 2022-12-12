@@ -7,7 +7,7 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\LogsActivity;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -140,12 +140,12 @@ class User extends Authenticatable
     }
     
     /**
-     * Get the transactions that have the concert
+     * Get the voting data
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function transaction(): HasMany
+    public function voting(): BelongsTo
     {
-        return $this->hasMany(Transaction::class,'user_id','id');
+        return $this->belongsTo(Voting::class,'id','user_id');
     }
 }
