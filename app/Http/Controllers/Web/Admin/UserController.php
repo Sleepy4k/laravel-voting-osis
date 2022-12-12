@@ -1,0 +1,126 @@
+<?php
+
+namespace App\Http\Controllers\Web\Admin;
+
+use App\Http\Controllers\WebController;
+use App\DataTables\Admin\UserDataTable;
+use App\Services\Web\Admin\UserService;
+use App\Http\Requests\Web\Admin\User\StoreRequest;
+use App\Http\Requests\Web\Admin\User\UpdateRequest;
+
+class UserController extends WebController
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \App\Services\Web\Admin\UserService  $service
+     * @param  \App\DataTables\Admin\UserDataTable  $dataTable
+     * @return \Illuminate\Http\Response
+     */
+    public function index(UserService $service, UserDataTable $dataTable)
+    {
+        try {
+            return $dataTable->render('pages.admin.user.index', $service->index());
+        } catch (\Throwable $th) {
+            return $this->redirectError($th);
+        }
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \App\Services\Web\Admin\UserService  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function create(UserService $service)
+    {
+        try {
+            return view('pages.admin.user.create', $service->create());
+        } catch (\Throwable $th) {
+            return $this->redirectError($th);
+        }
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \App\Http\Requests\Web\Admin\User\StoreRequest  $request
+     * @param  \App\Services\Web\Admin\UserService  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function store(StoreRequest $request, UserService $service)
+    {
+        try {
+            return $service->store($request->validated()) ? to_route('admin.user.index') : back();
+        } catch (\Throwable $th) {
+            return $this->redirectError($th);
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Services\Web\Admin\UserService  $service
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(UserService $service, $id)
+    {
+        try {
+            return view('pages.admin.user.show', $service->show($id));
+        } catch (\Throwable $th) {
+            return $this->redirectError($th);
+        }
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Services\Web\Admin\UserService  $service
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(UserService $service, $id)
+    {
+        try {
+            return view('pages.admin.user.edit', $service->edit($id));
+        } catch (\Throwable $th) {
+            return $this->redirectError($th);
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \App\Http\Requests\Web\Admin\User\UpdateRequest  $request
+     * @param  \App\Services\Web\Admin\UserService  $service
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(UpdateRequest $request, UserService $service, $id)
+    {
+        try {
+            return $service->update($request->validated(), $id) ? to_route('admin.user.index') : back();
+        } catch (\Throwable $th) {
+            return $this->redirectError($th);
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Services\Web\Admin\UserService  $service
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(UserService $service, $id)
+    {
+        try {
+            $service->destroy($id);
+    
+            return to_route('admin.user.index');
+        } catch (\Throwable $th) {
+            return $this->redirectError($th);
+        }
+    }
+}
