@@ -7,6 +7,16 @@ use App\Http\Requests\WebRequest;
 class StoreRequest extends WebRequest
 {
     /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return auth()->check();
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, mixed>
@@ -16,6 +26,19 @@ class StoreRequest extends WebRequest
         return [
             'user_id' => ['required','numeric','exists:users,id'],
             'candidate_id' => ['required','numeric','exists:candidates,id']
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'user_id' => 'ID Pemilih',
+            'candidate_id' => 'ID Kandidat'
         ];
     }
 }
