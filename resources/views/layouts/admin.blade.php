@@ -10,8 +10,8 @@
     <body>
         <div id="app">
             <div id="main">
-                @include('admin.partials.sidebar')
-                @include('admin.partials.header')
+                @includeIf('partials.sidebar.admin')
+                @includeIf('partials.navbar.admin.header')
 
                 <div class="page-content">
                     @hasSection('content')
@@ -19,10 +19,10 @@
                     @endif
                 </div>
 
-                @include('admin.partials.footer')
+                @includeIf('partials.footer.admin')
             </div>
         </div>
 
-        @includeIf('partials.head.script.admin')
+        @includeIf('partials.script.admin')
     </body>
 </html>

@@ -23,8 +23,8 @@
                                         {{ $candidate->chairman }} & {{ $candidate->vice_chairman }}
                                     </div>
 
-                                    @if (file_exists(public_path('storage/images/' . $candidate->image)))
-                                        <img src="{{ asset('storage/images/' . $candidate->image) }}" class="card-img-top" alt="{{ $candidate->image }}">
+                                    @if (file_exists(public_path('storage/image/' . $candidate->image)))
+                                        <img src="{{ asset('storage/image/' . $candidate->image) }}" class="card-img-top" alt="{{ $candidate->image }}">
                                     @else
                                         <img src="{{ asset('image/candidate.jpg') }}" class="card-img-top" alt="candidate.jpg">
                                     @endif
