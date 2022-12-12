@@ -21,7 +21,8 @@ class CandidateFactory extends Factory
             'vice_chairman' => fake()->unique()->name(),
             'image' => 'candidate.jpg',
             'vision' => fake()->text(150),
-            'mission' => fake()->sentence(255)
+            'mission' => fake()->sentence(255),
+            'total_voting' => rand(0,10)
         ];
     }
 }

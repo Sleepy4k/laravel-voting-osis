@@ -6,6 +6,7 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Voting extends Model
@@ -124,5 +125,25 @@ class Voting extends Model
                             ->useLogName('model')
                             ->setDescriptionForEvent(fn(string $eventName) => trans('model.activity.description', ['model' => $this->table, 'event' => $eventName]))
                             ->dontSubmitEmptyLogs();
+    }
+    
+    /**
+     * Get the concert that owns the transaction
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function candidate(): BelongsTo
+    {
+        return $this->belongsTo(Concert::class,'candidate_id','id');
+    }
+    
+    /**
+     * Get the user that owns the transaction
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class,'user_id','id');
     }
 }

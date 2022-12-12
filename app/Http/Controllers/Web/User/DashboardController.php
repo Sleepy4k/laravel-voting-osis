@@ -27,6 +27,7 @@ class DashboardController extends WebController
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\Web\User\Dashboard\StoreRequest  $request
+     * @param  \App\Services\Web\User\DashboardService  $service
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request, DashboardService $service)

@@ -15,9 +15,10 @@ interface EloquentInterface
      * @param  array  $wheres
      * @param  string  $orderBy
      * @param  bool  $latest
+     * @param  array  $roles
      * @return Collection
      */
-    public function all(array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true): Collection;
+    public function all(array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true, array $roles = []): Collection;
     
     /**
      * Get all in pagination models.
@@ -28,9 +29,10 @@ interface EloquentInterface
      * @param  array  $wheres
      * @param  string  $orderBy
      * @param  bool  $latest
+     * @param  array  $roles
      * @return Collection
      */
-    public function paginate(int $paginate = 10, array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true);
+    public function paginate(int $paginate = 10, array $columns = ['*'], array $relations = [], array $wheres = [], string $orderBy = 'created_at', bool $latest = true, array $roles = []);
 
     /**
      * Get all trashed models.

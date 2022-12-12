@@ -24,6 +24,6 @@
             </main>
         </div>
 
-        @includeIf('partials.head.script.app')
+        @includeIf('partials.script.app')
     </body>
 </html>

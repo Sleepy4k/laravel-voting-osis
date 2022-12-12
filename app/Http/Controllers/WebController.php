@@ -17,8 +17,8 @@ class WebController extends Controller
     {
         $this->sendReportLog('error', $error->getMessage());
 
-        if (config('app.env') == 'local') {
-            toastr()->error($error->getMessage(), 'System');
+        if (auth()->check() && auth()->user()->getRoleNames()[0] == 'superadmin') {
+            toastr()->error($error->getMessage(), 'Debug');
         }
 
         return back();

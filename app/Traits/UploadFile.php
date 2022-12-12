@@ -115,11 +115,17 @@ trait UploadFile
     protected function deleteFile($type, $file)
     {
         try {
-            return Storage::delete($this->storageDisk($type).$file);
+            if ($this->checkFile($type, $file)) {
+                Storage::delete($this->storageDisk($type).$file);
+
+                return true;
+            }
+
+            return false;
         } catch (\Throwable $th) {
             $this->sendReportLog('error', $th->getMessage());
             
-            return null;
+            return false;
         }
     }
 

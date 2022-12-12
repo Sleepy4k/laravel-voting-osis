@@ -28,6 +28,7 @@ class DashboardService extends WebService
     {
         if (auth()->user()->voting_status == 'false') {
             $this->votingInterface->create($request);
+            $this->candidateInterface->findById($request['candidate_id'])->increment('total_voting');
             $this->userInterface->update($request['user_id'], [
                 'voting_status' => 'true'
             ]);

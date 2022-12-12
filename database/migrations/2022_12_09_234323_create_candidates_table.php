@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('image');
             $table->text('vision');
             $table->text('mission');
+            $table->bigInteger('total_voting')->default(0);
             $table->timestamps();
         });
     }

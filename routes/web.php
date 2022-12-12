@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Web\User;
+use App\Http\Controllers\Web\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,6 +59,20 @@ Route::middleware('auth')->group(function() {
     Route::as('main.')->middleware('role:user')->group(function() {
         Route::get('/', [User\DashboardController::class, 'index'])->name('dashboard.index');
         Route::post('vote/{id}', [User\DashboardController::class, 'store'])->name('dashboard.store');
+    });
+
+    // Admin Route
+    Route::prefix('admin')->as('admin.')->middleware('role:admin|superadmin')->group(function() {
+        Route::resource('user', Admin\UserController::class);
+        Route::resource('candidate', Admin\CandidateController::class);
+        Route::get('/', [Admin\DashboardController::class, 'index'])->name('dashboard.index');
+
+        // Custom admin prefix
+        Route::as('custom.')->group(function() {
+            Route::post('import', [Admin\AdminController::class, 'import'])->name('import');
+            Route::get('template', [Admin\AdminController::class, 'template'])->name('template');
+            Route::get('reset/{user}/{candidate}', [Admin\AdminController::class, 'reset'])->name('reset');
+        });
     });
 });
 

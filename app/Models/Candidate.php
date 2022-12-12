@@ -78,7 +78,8 @@ class Candidate extends Model
         'vice_chairman',
         'image',
         'vision',
-        'mission'
+        'mission',
+        'total_voting'
     ];
 
     /**
@@ -114,7 +115,8 @@ class Candidate extends Model
         'vice_chairman' => 'string',
         'image' => 'string',
         'vision' => 'string',
-        'mission' => 'string'
+        'mission' => 'string',
+        'total_voting' => 'integer'
     ];
     
     /**

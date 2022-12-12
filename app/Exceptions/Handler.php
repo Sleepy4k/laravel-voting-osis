@@ -56,6 +56,12 @@ class Handler extends ExceptionHandler
                     'error' => $e->getMessage()
                 ], 403);
             }
+
+            if (auth()->check() && auth()->user()->getRoleNames()[0] != 'user') {
+                return to_route('admin.dashboard.index');
+            } else {
+                return to_route('main.dashboard.index');
+            }
         });
     }
 }

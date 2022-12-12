@@ -18,7 +18,7 @@ class VotingFactory extends Factory
     {
         return [
             'user_id' => rand(1,10),
-            'candidate_id' => rand(1,3)
+            'candidate_id' => rand(1,2)
         ];
     }
 }
