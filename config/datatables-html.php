@@ -5,7 +5,7 @@ return [
      * DataTables JavaScript global namespace.
      */
 
-    'namespace' => env('ACTIVITY_LOGGER_ENABLED', 'LaravelDataTables'),
+    'namespace' => env('DATATABLES_HTML_NAMESPACE', 'LaravelDataTables'),
 
     /*
      * Default table attributes when generating the table.
