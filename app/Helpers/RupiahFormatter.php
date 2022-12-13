@@ -4,11 +4,11 @@
  * Change from plain number to rupiah format
  * 
  * @param int $integer
- * @return string
+ * @return float
  */
 if (!function_exists('intToRupiah')) {
     function intToRupiah($integer)
     {
-        return number_format($integer, 0, ',', '.');
+        return (float) number_format($integer, 0, ',', '.');
     }
 }
