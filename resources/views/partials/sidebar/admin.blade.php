@@ -35,7 +35,7 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title">Menu</li>
+                <li class="sidebar-title">Main Menu</li>
                 <li class="sidebar-item">
                     <a href="{{ route('admin.dashboard.index') }}" class='sidebar-link'>
                         <i class="bi bi-grid-fill"></i>
@@ -54,6 +54,34 @@
                         <span>Data Pemilih</span>
                     </a>
                 </li>
+
+                @role('superadmin')
+                    <li class="sidebar-title">Audit Log</li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('admin.audit.auth.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Auth</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('admin.audit.model.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Model</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item ">
+                        <a href="{{ route('admin.audit.query.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Query</span>
+                        </a>
+                    </li>
+                    <li class="sidebar-item ">
+                        <a href="{{ route('admin.audit.system.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>System</span>
+                        </a>
+                    </li>
+                @endrole
             </ul>
         </div>
     </div>
