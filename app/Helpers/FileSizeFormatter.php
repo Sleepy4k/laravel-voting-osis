@@ -16,6 +16,6 @@ if (!function_exists('formatFileBytes')) {
         $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
         $pow = min($pow, count($units) - 1); 
 
-        return round(intToRupiah($bytes), $precision) . ' ' . $units[$pow];
+        return round((float) intToRupiah($bytes), $precision) . ' ' . $units[$pow];
     }
 }

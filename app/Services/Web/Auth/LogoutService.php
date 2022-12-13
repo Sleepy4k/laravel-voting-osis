@@ -17,7 +17,7 @@ class LogoutService extends WebService
     {
         $user = auth()->user();
 
-        activity('logout')->withProperties($user)->log($user->username.' berhasil logout');
+        activity('auth')->withProperties($user)->log($user->username.' berhasil logout');
 
         auth()->logout();
          
