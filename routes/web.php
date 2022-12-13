@@ -3,6 +3,7 @@
 use App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Web\User;
 use App\Http\Controllers\Web\Admin;
+use App\Http\Controllers\Web\Audit;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,9 +64,21 @@ Route::middleware('auth')->group(function() {
 
     // Admin Route
     Route::prefix('admin')->as('admin.')->middleware('role:admin|superadmin')->group(function() {
-        Route::resource('user', Admin\UserController::class);
-        Route::resource('candidate', Admin\CandidateController::class);
         Route::get('/', [Admin\DashboardController::class, 'index'])->name('dashboard.index');
+
+        Route::resources([
+            'user' => Admin\UserController::class,
+            'candidate' => Admin\CandidateController::class,
+        ]);
+
+        Route::prefix('audit')->as('audit.')->middleware('role:superadmin')->group(function() {
+            Route::resources([
+                'auth' => Audit\AuthController::class,
+                'model' => Audit\ModelController::class,
+                'query' => Audit\QueryController::class,
+                'system' => Audit\SystemController::class
+            ], ['only' => ['index','show']]);
+        });
 
         // Custom admin prefix
         Route::as('custom.')->group(function() {
