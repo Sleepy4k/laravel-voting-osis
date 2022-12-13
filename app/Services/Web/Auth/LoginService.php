@@ -19,11 +19,13 @@ class LoginService extends WebService
 
             $user = auth()->user();
 
-            activity('login')->withProperties($user)->log($user->username.' berhasil login');
+            activity('auth')->withProperties($user)->log($user->username.' berhasil login');
             toastr()->success('Kamu berhasil login', 'System');
 
             return true;
         } else {
+            toastr()->error('Nis atau password tidak cocok', 'System');
+
             return false;
         }
     }
