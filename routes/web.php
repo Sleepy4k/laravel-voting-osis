@@ -4,6 +4,7 @@ use App\Http\Controllers\Web\Auth;
 use App\Http\Controllers\Web\User;
 use App\Http\Controllers\Web\Admin;
 use App\Http\Controllers\Web\Audit;
+use App\Http\Controllers\Web\System;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,6 +72,12 @@ Route::middleware('auth')->group(function() {
             'candidate' => Admin\CandidateController::class,
         ]);
 
+        // System Route
+        Route::prefix('system')->as('system.')->middleware('role:superadmin')->group(function() {
+            Route::resource('translate', System\TranslateController::class);
+        });
+
+        // Audit Route
         Route::prefix('audit')->as('audit.')->middleware('role:superadmin')->group(function() {
             Route::resources([
                 'auth' => Audit\AuthController::class,

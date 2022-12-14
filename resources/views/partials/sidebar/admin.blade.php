@@ -56,6 +56,14 @@
                 </li>
 
                 @role('superadmin')
+                    <li class="sidebar-title">System Menu</li>
+                    <li class="sidebar-item">
+                        <a href="{{ route('admin.system.translate.index') }}" class='sidebar-link'>
+                            <i class="bi bi-grid-fill"></i>
+                            <span>Translate</span>
+                        </a>
+                    </li>
+
                     <li class="sidebar-title">Audit Log</li>
                     <li class="sidebar-item">
                         <a href="{{ route('admin.audit.auth.index') }}" class='sidebar-link'>

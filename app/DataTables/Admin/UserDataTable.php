@@ -56,6 +56,7 @@ class UserDataTable extends DataTable
         return $this->builder()
                     ->setTableId('user-table')
                     ->columns($this->getColumns())
+                    ->language($this->getLanguage())
                     ->minifiedAjax()
                     ->dom('Bfrtip')
                     ->orderBy(0, 'asc')
@@ -70,6 +71,16 @@ class UserDataTable extends DataTable
                         Button::make('print'),
                         Button::make('reload')
                     ]);
+    }
+
+    /**
+     * Get language.
+     *
+     * @return array
+     */
+    protected function getLanguage()
+    {
+        return trans('datatable.translate');
     }
 
     /**

@@ -4,8 +4,8 @@
     <div class="row h-100">
         <div class="col-lg-5 col-12">
             <div id="auth-left">
-                <h1 class="auth-title">Log in.</h1>
-                <p class="auth-subtitle mb-5">Log in menggunakan data yang diberikan panitia.</p>
+                <h1 class="auth-title">@lang('page.auth.login.title')</h1>
+                <p class="auth-subtitle mb-5">@lang('page.auth.login.description')</p>
                 @includeIf('partials.form.auth.login')
             </div>
         </div>

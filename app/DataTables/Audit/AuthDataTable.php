@@ -88,6 +88,7 @@ class AuthDataTable extends DataTable
         return $this->builder()
                     ->setTableId('auth-table')
                     ->columns($this->getColumns())
+                    ->language($this->getLanguage())
                     ->minifiedAjax()
                     ->dom('Bfrtip')
                     ->orderBy(0, 'desc')
@@ -104,6 +105,16 @@ class AuthDataTable extends DataTable
                         Button::make('reload'),
                         Button::make('copy')
                     ]);
+    }
+
+    /**
+     * Get language.
+     *
+     * @return array
+     */
+    protected function getLanguage()
+    {
+        return trans('datatable.translate');
     }
 
     /**

@@ -52,6 +52,7 @@ class QueryDataTable extends DataTable
                     ->serverSide(false)
                     ->setTableId('query-table')
                     ->columns($this->getColumns())
+                    ->language($this->getLanguage())
                     ->minifiedAjax()
                     ->dom('Bfrtip')
                     ->orderBy(0, 'desc')
@@ -65,6 +66,16 @@ class QueryDataTable extends DataTable
                         Button::make('print'),
                         Button::make('copy')
                     ]);
+    }
+
+    /**
+     * Get language.
+     *
+     * @return array
+     */
+    protected function getLanguage()
+    {
+        return trans('datatable.translate');
     }
 
     /**

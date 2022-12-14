@@ -78,7 +78,7 @@
                                             <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                                             <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
 
-                                            <button class="btn btn-primary">Vote</button>
+                                            <button class="btn btn-primary">@lang('page.user.dashboard.vote')</button>
                                         </form>
                                     </div>
                                 </div>
@@ -87,8 +87,8 @@
                     </div>
                 @else
                     <div class="alert alert-danger">
-                        <h4 class="alert-heading">Anda Sudah Melakukan Voting</h4>
-                        <p>Jika anda merasa belum melakukan voting, silahkan hubungin panitia.</p>
+                        <h4 class="alert-heading">@lang('page.user.dashboard.already_vote')</h4>
+                        <p>@lang('page.user.dashboard.admin_help')</p>
                     </div>
                 @endif
             </div>

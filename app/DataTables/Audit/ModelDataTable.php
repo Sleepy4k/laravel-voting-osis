@@ -88,6 +88,7 @@ class ModelDataTable extends DataTable
         return $this->builder()
                     ->setTableId('model-table')
                     ->columns($this->getColumns())
+                    ->language($this->getLanguage())
                     ->minifiedAjax()
                     ->dom('Bfrtip')
                     ->orderBy(0, 'asc')
@@ -103,6 +104,16 @@ class ModelDataTable extends DataTable
                         Button::make('reload'),
                         Button::make('copy')
                     ]);
+    }
+
+    /**
+     * Get language.
+     *
+     * @return array
+     */
+    protected function getLanguage()
+    {
+        return trans('datatable.translate');
     }
 
     /**

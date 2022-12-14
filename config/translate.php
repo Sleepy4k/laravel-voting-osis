@@ -139,6 +139,126 @@ return [
             ]
         ],
         [
+            'group' => 'error',
+            'key' => 'back_home',
+            'text' => [
+                'id' => 'Back to home',
+                'en' => 'Kembali ke halaman'
+            ]
+        ],
+        [
+            'group' => 'error',
+            'key' => '401.title',
+            'text' => [
+                'id' => 'Unauthorized Request',
+                'en' => 'Permintaan Tidak Sah'
+            ]
+        ],
+        [
+            'group' => 'error',
+            'key' => '401.description',
+            'text' => [
+                'id' => 'Unauthorized Access due invalid credential or access',
+                'en' => 'Akses Tidak Sah karena kredensial atau akses tidak valid'
+            ]
+        ],
+        [
+            'group' => 'error',
+            'key' => '404.title',
+            'text' => [
+                'id' => 'Page not found',
+                'en' => 'halaman tidak ditemukan'
+            ]
+        ],
+        [
+            'group' => 'error',
+            'key' => '404.description',
+            'text' => [
+                'id' => 'We are sorry, but the page you requested was not found',
+                'en' => 'Maaf, tetapi halaman yang Anda minta tidak ditemukan'
+            ]
+        ],
+        [
+            'group' => 'error',
+            'key' => '500.title',
+            'text' => [
+                'id' => 'Server Error',
+                'en' => 'Server Error'
+            ]
+        ],
+        [
+            'group' => 'error',
+            'key' => '500.description',
+            'text' => [
+                'id' => 'Server mengalami kesalahan internal atau kesalahan konfigurasi dan tidak dapat menyelesaikan permintaan Anda',
+                'en' => 'The server encountered an internal error or misconfiguration and was unable to complete your request'
+            ]
+        ],
+        [
+            'group' => 'footer',
+            'key' => 'copyright',
+            'text' => [
+                'id' => 'Hak cipta © :year :name',
+                'en' => 'Copyright © :year :name'
+            ]
+        ],
+        [
+            'group' => 'form',
+            'key' => 'login.placeholder.nis',
+            'text' => [
+                'id' => 'Nomer Induk Siswa',
+                'en' => 'Student Identification Number'
+            ]
+        ],
+        [
+            'group' => 'form',
+            'key' => 'login.placeholder.password',
+            'text' => [
+                'id' => 'Kata Sandi',
+                'en' => 'Password'
+            ]
+        ],
+        [
+            'group' => 'form',
+            'key' => 'login.submit',
+            'text' => [
+                'id' => 'Masuk',
+                'en' => 'Sign in'
+            ]
+        ],
+        [
+            'group' => 'form',
+            'key' => 'button.submit.add',
+            'text' => [
+                'id' => 'Menambahkan',
+                'en' => 'Add'
+            ]
+        ],
+        [
+            'group' => 'form',
+            'key' => 'button.submit.edit',
+            'text' => [
+                'id' => 'Memperbarui',
+                'en' => 'Update'
+            ]
+        ],
+        [
+            'group' => 'form',
+            'key' => 'button.reset',
+            'text' => [
+                'id' => 'Atur Ulang',
+                'en' => 'Reset'
+            ]
+        ],
+        [
+            'group' => 'form',
+            'key' => 'button.back',
+            'text' => [
+                'id' => 'Kembali',
+                'en' => 'Back'
+            ]
+        ],
+        [
             'group' => 'model',
             'key' => 'activity.description',
             'text' => [
@@ -152,6 +272,94 @@ return [
             'text' => [
                 'id' => 'Data bahas tidak valid',
                 'en' => 'Invalid language data'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'empty.table',
+            'text' => [
+                'id' => 'Belum ada data yang tersedia',
+                'en' => 'No data available yet'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'proccess',
+            'text' => [
+                'id' => 'Sedang memproses...',
+                'en' => 'Processing...'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'lenght',
+            'text' => [
+                'id' => 'tampilkan _MENU_ data',
+                'en' => 'show _MENU_ data'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'info',
+            'text' => [
+                'id' => 'menampilkan _START_ sampai _END_ dari _TOTAL_ data',
+                'en' => 'show _START_ to _END_ of _TOTAL_ data'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'infoEmpty',
+            'text' => [
+                'id' => 'menampilkan 0 sampai 0 dari 0 data',
+                'en' => 'show 0 to 0 of 0 data'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'infoFilter',
+            'text' => [
+                'id' => '(disaring dari _MAX_ data)',
+                'en' => '(filtered from _MAX_ data)'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'search',
+            'text' => [
+                'id' => 'mencari :',
+                'en' => 'search :'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'infoThousand',
+            'text' => [
+                'id' => ',',
+                'en' => ','
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'loading',
+            'text' => [
+                'id' => 'Sedang memuat...',
+                'en' => 'Loading...'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'aria.newest',
+            'text' => [
+                'id' => ': Centang untuk mengurutkan kolom dalam urutan menaik',
+                'en' => '": Tick to sort columns in ascending order'
+            ]
+        ],
+        [
+            'group' => 'table',
+            'key' => 'aria.oldest',
+            'text' => [
+                'id' => ': Centang untuk mengurutkan kolom ke bawah',
+                'en' => ': Tick to sort column down'
             ]
         ],
         [

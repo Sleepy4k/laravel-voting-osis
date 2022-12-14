@@ -36,7 +36,7 @@
                         @hasSection('button')
                             @yield('button')
                         @else
-                            <a href="{{ route('main.dashboard.index') }}" class="btn btn-lg btn-outline-primary mt-3">Go Home</a>
+                            <a href="{{ route('main.dashboard.index') }}" class="btn btn-lg btn-outline-primary mt-3">@lang('error.back_home')</a>
                         @endif
                     </div>
                 </div>
