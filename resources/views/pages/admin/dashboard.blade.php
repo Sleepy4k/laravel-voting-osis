@@ -14,7 +14,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Jumlah Pemilih</h6>
+                                    <h6 class="text-muted font-semibold">@lang('page.admin.dashboard.total_voter')</h6>
                                     <h6 class="font-extrabold mb-0">{{ count($users) }}</h6>
                                 </div>
                             </div>
@@ -31,7 +31,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Sudah Memilih</h6>
+                                    <h6 class="text-muted font-semibold">@lang('page.admin.dashboard.already_vote')</h6>
                                     <h6 class="font-extrabold mb-0">{{ count($already_choose) }}</h6>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-8">
-                                    <h6 class="text-muted font-semibold">Jumlah Kandidat</h6>
+                                    <h6 class="text-muted font-semibold">@lang('page.admin.dashboard.total_candidate')</h6>
                                     <h6 class="font-extrabold mb-0">{{ count($candidates) }}</h6>
                                 </div>
                             </div>
@@ -59,7 +59,7 @@
             <div class="row">
                 <div class="card">
                     <h1 class="text-center text-primary mt-3">
-                        Hasil Voting
+                        @lang('page.admin.dashboard.voting_result')
                     </h1>
                     <div class="row mt-2 justify-content-center">
                         @foreach($candidates as $candidate)
@@ -76,7 +76,7 @@
                                     @endif
 
                                     <div class="card-body text-center">
-                                        <h5 class="mt-3">{{ $candidate->total_voting }} Suara</h5>
+                                        <h5 class="mt-3">{{ $candidate->total_voting }} @lang('page.admin.dashboard.vote')</h5>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +88,7 @@
         <div class="col-12 col-lg-3">
             <div class="card">
                 <div class="card-header">
-                    <h4>Pemilih Terkini</h4>
+                    <h4>@lang('page.admin.dashboard.latest_voter')</h4>
                 </div>
                 @foreach ($voters as $voter)
                     <div class="card-content pb-4">
@@ -106,7 +106,7 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h4>Hasil Voting</h4>
+                    <h4>@lang('page.admin.dashboard.voting_result')</h4>
                 </div>
                 <div class="card-body">
                     <div id="voting-chart"></div>
