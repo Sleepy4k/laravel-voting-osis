@@ -20,7 +20,9 @@ class DatabaseSeeder extends Seeder
             GradeSeeder::class,
             UserSeeder::class,
             CandidateSeeder::class,
-            VotingSeeder::class
+            VotingSeeder::class,
+            MenuSeeder::class,
+            PageSeeder::class
         ]);
     }
 }

@@ -35,61 +35,32 @@
         </div>
         <div class="sidebar-menu">
             <ul class="menu">
-                <li class="sidebar-title">Main Menu</li>
-                <li class="sidebar-item">
-                    <a href="{{ route('admin.dashboard.index') }}" class='sidebar-link'>
-                        <i class="bi bi-grid-fill"></i>
-                        <span>Dashboard</span>
-                    </a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="{{ route('admin.candidate.index') }}" class='sidebar-link'>
-                        <i class="bi bi-people-fill"></i>
-                        <span>Data Calon</span>
-                    </a>
-                </li>
-                <li class="sidebar-item ">
-                    <a href="{{ route('admin.user.index') }}" class='sidebar-link'>
-                        <i class="bi bi-people-fill"></i>
-                        <span>Data Pemilih</span>
-                    </a>
-                </li>
-
-                @role('superadmin')
-                    <li class="sidebar-title">System Menu</li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('admin.system.translate.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Translate</span>
-                        </a>
-                    </li>
-
-                    <li class="sidebar-title">Audit Log</li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('admin.audit.auth.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Auth</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item">
-                        <a href="{{ route('admin.audit.model.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Model</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item ">
-                        <a href="{{ route('admin.audit.query.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>Query</span>
-                        </a>
-                    </li>
-                    <li class="sidebar-item ">
-                        <a href="{{ route('admin.audit.system.index') }}" class='sidebar-link'>
-                            <i class="bi bi-grid-fill"></i>
-                            <span>System</span>
-                        </a>
-                    </li>
-                @endrole
+                @foreach ($sidebar as $menu)
+                    @if (count($menu->pages) > 0)
+                        @role($menu->role)
+                            <li class="sidebar-title">@lang($menu->label)</li>
+                            @foreach ($menu->pages as $page)
+                                @if ($page->permission == null)
+                                    <li class="sidebar-item">
+                                        <a href="{{ route($page->route) }}" class='sidebar-link'>
+                                            <i class="{{ $page->icon }}"></i>
+                                            <span>@lang($page->label)</span>
+                                        </a>
+                                    </li>
+                                @else
+                                    @can($page->permission)
+                                        <li class="sidebar-item">
+                                            <a href="{{ route($page->route) }}" class='sidebar-link'>
+                                                <i class="{{ $page->icon }}"></i>
+                                                <span>@lang($page->label)</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                @endif
+                            @endforeach
+                        @endrole
+                    @endif
+                @endforeach
             </ul>
         </div>
     </div>
