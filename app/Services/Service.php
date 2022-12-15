@@ -20,6 +20,16 @@ class Service
     protected $roleInterface;
 
     /**
+     * @var menuInterface
+     */
+    protected $menuInterface;
+
+    /**
+     * @var pageInterface
+     */
+    protected $pageInterface;
+
+    /**
      * @var auditInterface
      */
     protected $auditInterface;
@@ -59,6 +69,8 @@ class Service
      * 
      * @param  \App\Contracts\Models\UserInterface  $userInterface
      * @param  \App\Contracts\Models\RoleInterface  $roleInterface
+     * @param  \App\Contracts\Models\MenuInterface  $menuInterface
+     * @param  \App\Contracts\Models\PageInterface  $pageInterface
      * @param  \App\Contracts\Models\AuditInterface  $auditInterface
      * @param  \App\Contracts\Models\GradeInterface  $gradeInterface
      * @param  \App\Contracts\Models\VotingInterface  $votingInterface
@@ -70,6 +82,8 @@ class Service
     public function __construct(
         Models\UserInterface $userInterface,
         Models\RoleInterface $roleInterface,
+        Models\MenuInterface $menuInterface,
+        Models\PageInterface $pageInterface,
         Models\AuditInterface $auditInterface,
         Models\GradeInterface $gradeInterface,
         Models\VotingInterface $votingInterface,
@@ -81,6 +95,8 @@ class Service
     {
         $this->userInterface = $userInterface;
         $this->roleInterface = $roleInterface;
+        $this->menuInterface = $menuInterface;
+        $this->pageInterface = $pageInterface;
         $this->auditInterface = $auditInterface;
         $this->gradeInterface = $gradeInterface;
         $this->votingInterface = $votingInterface;
