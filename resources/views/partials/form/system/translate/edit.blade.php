@@ -1,4 +1,4 @@
-<form class="form form-vertical" action="{{ route('admin.system.translate.update', $translate->id) }}" method="POST" enctype="multipart/form-data">
+<form class="form form-vertical" action="{{ route('admin.system.translate.update', $translate->id) }}" method="POST">
     @csrf
     @method('put')
     
