@@ -74,7 +74,11 @@ Route::middleware('auth')->group(function() {
 
         // System Route
         Route::prefix('system')->as('system.')->middleware('role:superadmin')->group(function() {
-            Route::resource('translate', System\TranslateController::class);
+            Route::resources([
+                'menu' => System\MenuController::class,
+                'page' => System\PageController::class,
+                'translate' => System\TranslateController::class
+            ]);
         });
 
         // Audit Route
@@ -87,7 +91,7 @@ Route::middleware('auth')->group(function() {
             ], ['only' => ['index','show']]);
         });
 
-        // Custom admin prefix
+        // Custom Route
         Route::as('custom.')->group(function() {
             Route::post('import', [Admin\AdminController::class, 'import'])->name('import');
             Route::get('template', [Admin\AdminController::class, 'template'])->name('template');
