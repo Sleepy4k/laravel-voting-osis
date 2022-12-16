@@ -74,6 +74,7 @@ Route::middleware('auth')->group(function() {
 
         // System Route
         Route::prefix('system')->as('system.')->middleware('role:superadmin')->group(function() {
+            Route::resource('application', System\ApplicationController::class, ['only' => ['index','create','store']]);
             Route::resources([
                 'menu' => System\MenuController::class,
                 'page' => System\PageController::class,
