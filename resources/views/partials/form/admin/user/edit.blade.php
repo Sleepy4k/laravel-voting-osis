@@ -7,13 +7,13 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="name">@lang('form.user.name')</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Nama Pemilih" value="{{ old('name', $user->name) }}" required autofocus>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="@lang('form.user.placeholder.name')" value="{{ old('name', $user->name) }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="nis">@lang('form.user.nis')</label>
-                    <input type="text" id="nis" name="nis" class="form-control" placeholder="Nis Pemilih" value="{{ old('nis', $user->nis) }}" required autofocus>
+                    <input type="text" id="nis" name="nis" class="form-control" placeholder="@lang('form.user.placeholder.nis')" value="{{ old('nis', $user->nis) }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">

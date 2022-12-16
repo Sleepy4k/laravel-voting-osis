@@ -20,16 +20,12 @@
                         <h1 class="error-title">
                             @hasSection('title')
                                 @yield('title')
-                            @else
-                                @lang('error.default_code')
                             @endif
                         </h1>
 
                         <p class='fs-5 text-gray-600'>
                             @hasSection('message')
                                 @yield('message')
-                            @else
-                                @lang('error.default_message')
                             @endif
                         </p>
 

@@ -7,13 +7,13 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="chairman">@lang('form.candidate.chairman')</label>
-                    <input type="text" id="chairman" name="chairman" class="form-control" placeholder="Nama Ketua" value="{{ old('chairman', $candidate->chairman) }}" required autofocus>
+                    <input type="text" id="chairman" name="chairman" class="form-control" placeholder="@lang('form.candidate.placeholder.chairman')" value="{{ old('chairman', $candidate->chairman) }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="vice_chairman">@lang('form.candidate.vice_chairman')</label>
-                    <input type="text" id="vice_chairman" name="vice_chairman" class="form-control" placeholder="Nama Wakil" value="{{ old('chairman', $candidate->vice_chairman) }}" required autofocus>
+                    <input type="text" id="vice_chairman" name="vice_chairman" class="form-control" placeholder="@lang('form.candidate.placeholder.vice_chairman')" value="{{ old('chairman', $candidate->vice_chairman) }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">
@@ -32,13 +32,13 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="vision">@lang('form.candidate.vision')</label>
-                    <textarea id="vision" name="vision" class="form-control" rows="3" placeholder="Visi calon kandidat" required autofocus>{{ old('vision', $candidate->vision) }}</textarea>
+                    <textarea id="vision" name="vision" class="form-control" rows="3" placeholder="@lang('form.candidate.placeholder.vision')" required autofocus>{{ old('vision', $candidate->vision) }}</textarea>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="mission">@lang('form.candidate.mission')</label>
-                    <textarea id="mission" name="mission" class="form-control" rows="3" placeholder="Misi calon kandidat" required autofocus>{{ old('mission', $candidate->mission) }}</textarea>
+                    <textarea id="mission" name="mission" class="form-control" rows="3" placeholder="@lang('form.candidate.placeholder.mission')" required autofocus>{{ old('mission', $candidate->mission) }}</textarea>
                 </div>
             </div>
             <div class="col-12">
