@@ -11,6 +11,20 @@ use App\Http\Requests\Web\System\Translate\UpdateRequest;
 class TranslateController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->routeName = 'admin.system.translate.index';
+        $this->indexView = 'pages.system.translate.index';
+        $this->createView = 'pages.system.translate.create';
+        $this->showView = 'pages.system.translate.show';
+        $this->editView = 'pages.system.translate.edit';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\System\TranslateService  $service
@@ -20,7 +34,7 @@ class TranslateController extends WebController
     public function index(TranslateService $service, TranslateDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.system.translate.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -35,7 +49,7 @@ class TranslateController extends WebController
     public function create(TranslateService $service)
     {
         try {
-            return view('pages.system.translate.create', $service->create());
+            return view($this->createView, $service->create());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -51,7 +65,7 @@ class TranslateController extends WebController
     public function store(StoreRequest $request, TranslateService $service)
     {
         try {
-            return $service->store($request->validated()) ? to_route('admin.system.translate.index') : back();
+            return $service->store($request->validated()) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -67,7 +81,7 @@ class TranslateController extends WebController
     public function show(TranslateService $service, $id)
     {
         try {
-            return view('pages.system.translate.show', $service->show($id));
+            return view($this->showView, $service->show($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -83,7 +97,7 @@ class TranslateController extends WebController
     public function edit(TranslateService $service, $id)
     {
         try {
-            return view('pages.system.translate.edit', $service->edit($id));
+            return view($this->editView, $service->edit($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -100,7 +114,7 @@ class TranslateController extends WebController
     public function update(UpdateRequest $request, TranslateService $service, $id)
     {
         try {
-            return $service->update($request->validated(), $id) ? to_route('admin.system.translate.index') : back();
+            return $service->update($request->validated(), $id) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -118,7 +132,7 @@ class TranslateController extends WebController
         try {
             $service->destroy($id);
     
-            return to_route('admin.system.translate.index');
+            return to_route($this->routeName);
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

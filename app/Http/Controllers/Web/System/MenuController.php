@@ -11,6 +11,20 @@ use App\Http\Requests\Web\System\Menu\UpdateRequest;
 class MenuController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->routeName = 'admin.system.menu.index';
+        $this->indexView = 'pages.system.menu.index';
+        $this->createView = 'pages.system.menu.create';
+        $this->showView = 'pages.system.menu.show';
+        $this->editView = 'pages.system.menu.edit';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\System\MenuService  $service
@@ -20,7 +34,7 @@ class MenuController extends WebController
     public function index(MenuService $service, MenuDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.system.menu.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -35,7 +49,7 @@ class MenuController extends WebController
     public function create(MenuService $service)
     {
         try {
-            return view('pages.system.menu.create', $service->create());
+            return view($this->createView, $service->create());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -51,7 +65,7 @@ class MenuController extends WebController
     public function store(StoreRequest $request, MenuService $service)
     {
         try {
-            return $service->store($request->validated()) ? to_route('admin.system.menu.index') : back();
+            return $service->store($request->validated()) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -67,7 +81,7 @@ class MenuController extends WebController
     public function show(MenuService $service, $id)
     {
         try {
-            return view('pages.system.menu.show', $service->show($id));
+            return view($this->showView, $service->show($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -83,7 +97,7 @@ class MenuController extends WebController
     public function edit(MenuService $service, $id)
     {
         try {
-            return view('pages.system.menu.edit', $service->edit($id));
+            return view($this->editView, $service->edit($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -100,7 +114,7 @@ class MenuController extends WebController
     public function update(UpdateRequest $request, MenuService $service, $id)
     {
         try {
-            return $service->update($request->validated(), $id) ? to_route('admin.system.menu.index') : back();
+            return $service->update($request->validated(), $id) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -118,7 +132,7 @@ class MenuController extends WebController
         try {
             $service->destroy($id);
     
-            return to_route('admin.system.menu.index');
+            return to_route($this->routeName);
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

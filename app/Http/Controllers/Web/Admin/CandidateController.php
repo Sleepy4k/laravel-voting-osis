@@ -11,6 +11,20 @@ use App\Http\Requests\Web\Admin\Candidate\UpdateRequest;
 class CandidateController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->routeName = 'admin.candidate.index';
+        $this->indexView = 'pages.admin.candidate.index';
+        $this->createView = 'pages.admin.candidate.create';
+        $this->showView = 'pages.admin.candidate.show';
+        $this->editView = 'pages.admin.candidate.edit';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\Admin\CandidateService  $service
@@ -20,7 +34,7 @@ class CandidateController extends WebController
     public function index(CandidateService $service, CandidateDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.admin.candidate.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -35,7 +49,7 @@ class CandidateController extends WebController
     public function create(CandidateService $service)
     {
         try {
-            return view('pages.admin.candidate.create', $service->create());
+            return view($this->createView, $service->create());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -51,7 +65,7 @@ class CandidateController extends WebController
     public function store(StoreRequest $request, CandidateService $service)
     {
         try {
-            return $service->store($request->validated()) ? to_route('admin.candidate.index') : back();
+            return $service->store($request->validated()) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -67,7 +81,7 @@ class CandidateController extends WebController
     public function show(CandidateService $service, $id)
     {
         try {
-            return view('pages.admin.candidate.show', $service->show($id));
+            return view($this->showView, $service->show($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -83,7 +97,7 @@ class CandidateController extends WebController
     public function edit(CandidateService $service, $id)
     {
         try {
-            return view('pages.admin.candidate.edit', $service->edit($id));
+            return view($this->editView, $service->edit($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -100,7 +114,7 @@ class CandidateController extends WebController
     public function update(UpdateRequest $request, CandidateService $service, $id)
     {
         try {
-            return $service->update($request->validated(), $id) ? to_route('admin.candidate.index') : back();
+            return $service->update($request->validated(), $id) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -118,7 +132,7 @@ class CandidateController extends WebController
         try {
             $service->destroy($id);
     
-            return to_route('admin.candidate.index');
+            return to_route($this->routeName);
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

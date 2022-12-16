@@ -11,6 +11,20 @@ use App\Http\Requests\Web\System\Page\UpdateRequest;
 class PageController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->routeName = 'admin.system.page.index';
+        $this->indexView = 'pages.system.page.index';
+        $this->createView = 'pages.system.page.create';
+        $this->showView = 'pages.system.page.show';
+        $this->editView = 'pages.system.page.edit';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\System\PageService  $service
@@ -20,7 +34,7 @@ class PageController extends WebController
     public function index(PageService $service, PageDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.system.page.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -35,7 +49,7 @@ class PageController extends WebController
     public function create(PageService $service)
     {
         try {
-            return view('pages.system.page.create', $service->create());
+            return view($this->createView, $service->create());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -51,7 +65,7 @@ class PageController extends WebController
     public function store(StoreRequest $request, PageService $service)
     {
         try {
-            return $service->store($request->validated()) ? to_route('admin.system.page.index') : back();
+            return $service->store($request->validated()) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -67,7 +81,7 @@ class PageController extends WebController
     public function show(PageService $service, $id)
     {
         try {
-            return view('pages.system.page.show', $service->show($id));
+            return view($this->showView, $service->show($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -83,7 +97,7 @@ class PageController extends WebController
     public function edit(PageService $service, $id)
     {
         try {
-            return view('pages.system.page.edit', $service->edit($id));
+            return view($this->editView, $service->edit($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -100,7 +114,7 @@ class PageController extends WebController
     public function update(UpdateRequest $request, PageService $service, $id)
     {
         try {
-            return $service->update($request->validated(), $id) ? to_route('admin.system.page.index') : back();
+            return $service->update($request->validated(), $id) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -118,7 +132,7 @@ class PageController extends WebController
         try {
             $service->destroy($id);
     
-            return to_route('admin.system.page.index');
+            return to_route($this->routeName);
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
