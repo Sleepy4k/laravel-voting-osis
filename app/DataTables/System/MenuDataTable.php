@@ -85,22 +85,22 @@ class MenuDataTable extends DataTable
     {
         return [
             Column::make('id')
-                    ->title('ID')
+                    ->title(trans('table.menu.id'))
                     ->addClass('text-center'),
             Column::make('name')
-                    ->title('Nama')
+                    ->title(trans('table.menu.name'))
                     ->addClass('text-center'),
             Column::make('label')
-                    ->title('Label')
+                    ->title(trans('table.menu.label'))
                     ->addClass('text-center'),
             Column::make('ordering')
-                    ->title('Urutan')
+                    ->title(trans('table.menu.ordering'))
                     ->addClass('text-center'),
             Column::make('role')
-                    ->title('Role')
+                    ->title(trans('table.menu.role'))
                     ->addClass('text-center'),
             Column::computed('action')
-                    ->title('Aksi')
+                    ->title(trans('table.menu.action'))
                     ->exportable(false)
                     ->printable(false)
                     ->addClass('text-center')

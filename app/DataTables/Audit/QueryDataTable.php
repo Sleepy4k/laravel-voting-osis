@@ -87,22 +87,22 @@ class QueryDataTable extends DataTable
     {
         return [
             Column::make('name')
-                    ->title('Nama')
+                    ->title(trans('table.query.name'))
                     ->addClass('text-center'),
             Column::make('size')
-                    ->title('Ukuran')
+                    ->title(trans('table.query.size'))
                     ->addClass('text-center'),
             Column::make('type')
-                    ->title('Tipe')
+                    ->title(trans('table.query.type'))
                     ->addClass('text-center'),
             Column::make('content')
-                    ->title('Konten')
+                    ->title(trans('table.query.content'))
                     ->addClass('text-center'),
             Column::make('last_updated')
-                    ->title('Terakhir Update')
+                    ->title(trans('table.query.last_updated'))
                     ->addClass('text-center'),
             Column::make('action')
-                    ->title('Aksi')
+                    ->title(trans('table.query.action'))
                     ->exportable(false)
                     ->printable(false)
                     ->searchable(false)

@@ -6,13 +6,13 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="name">@lang('form.user.name')</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Nama Pemilih" value="{{ old('name') }}" required autofocus>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="@lang('form.user.placeholder.name')" value="{{ old('name') }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="nis">@lang('form.user.nis')</label>
-                    <input type="text" id="nis" name="nis" class="form-control" placeholder="Nis Pemilih" value="{{ old('nis') }}" required autofocus>
+                    <input type="text" id="nis" name="nis" class="form-control" placeholder="@lang('form.user.placeholder.nis')" value="{{ old('nis') }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">
@@ -28,13 +28,13 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="password">@lang('form.user.password')</label>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Kata Sandi" required autofocus>
+                    <input type="password" id="password" name="password" class="form-control" placeholder="@lang('form.user.placeholder.password')" required autofocus>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="password_confirmation">@lang('form.user.password_confirmation')</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Konfirmasi Kata Sandi" required autofocus>
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="@lang('form.user.placeholder.password_confirmation')" required autofocus>
                 </div>
             </div>
             <div class="col-12">

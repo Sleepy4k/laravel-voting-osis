@@ -30,8 +30,25 @@ class UpdateRequest extends WebRequest
             'label' => ['required','string','max:255'],
             'menu_id' => ['required','numeric','exists:menus,id'],
             'route' => ['required','string','max:255'],
-            'icon' => ['required','string','max:255'],
-            'permission' => ['required','string','max:255']
+            'icon' => ['nullable','string','max:255'],
+            'permission' => ['nullable','string','max:255']
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => trans('form.page.name'),
+            'label' => trans('form.page.label'),
+            'menu_id' => trans('form.page.menu_id'),
+            'route' => trans('form.page.route'),
+            'icon' => trans('form.page.icon'),
+            'permission' => trans('form.page.permission')
         ];
     }
 }

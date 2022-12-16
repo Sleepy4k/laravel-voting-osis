@@ -33,7 +33,7 @@
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton"
                             style="min-width: 11rem;">
                             <li>
-                                <h6 class="dropdown-header">Hello, {{ auth()->user()->name }}</h6>
+                                <h6 class="dropdown-header">@lang('navbar.welcome', ['user' => auth()->user()->name])</h6>
                             </li>
                             
                             <a class="dropdown-item" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

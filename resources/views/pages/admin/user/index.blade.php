@@ -3,9 +3,7 @@
 @section('content')
     <section class="section">
         <div class="card">
-            <div class="card-header">
-                Data Pemilih
-            </div>
+            <div class="card-header">@lang('page.user.index.title')</div>
             <div class="card-body">
                 <div class="table-responsive">
                     @includeIf('partials.table.admin.user')

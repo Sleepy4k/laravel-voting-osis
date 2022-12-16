@@ -98,26 +98,28 @@ class CandidateDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('id')
+                    ->title(trans('table.candidate.id'))
+                    ->addClass('text-center'),
             Column::make('chairman')
-                    ->title('Nama Ketua')
+                    ->title(trans('table.candidate.chairman'))
                     ->addClass('text-center'),
             Column::make('vice_chairman')
-                    ->title('Nama Wakil')
+                    ->title(trans('table.candidate.vice_chairman'))
                     ->addClass('text-center'),
             Column::make('image')
-                    ->title('Foto Calon')
+                    ->title(trans('table.candidate.image'))
                     ->exportable(false)
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::make('vision')
-                    ->title('Visi')
+                    ->title(trans('table.candidate.vision'))
                     ->addClass('text-center'),
             Column::make('mission')
-                    ->title('Misi')
+                    ->title(trans('table.candidate.mission'))
                     ->addClass('text-center'),
             Column::make('action')
-                    ->title('Aksi')
+                    ->title(trans('table.candidate.action'))
                     ->exportable(false)
                     ->printable(false)
                     ->searchable(false)

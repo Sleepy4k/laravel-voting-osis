@@ -19,6 +19,7 @@ class LoginService extends WebService
 
             $user = auth()->user();
 
+            session()->put('language_code', $user->language);
             activity('auth')->withProperties($user)->log($user->username.' berhasil login');
             toastr()->success('Kamu berhasil login', 'System');
 

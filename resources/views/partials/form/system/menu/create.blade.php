@@ -6,31 +6,25 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="name">@lang('form.menu.name')</label>
-                    <input type="text" id="name" name="name" class="form-control" placeholder="Menu Name" value="{{ old('name') }}" required autofocus>
+                    <input type="text" id="name" name="name" class="form-control" placeholder="@lang('form.menu.placeholder.name')" value="{{ old('name') }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="label">@lang('form.menu.label')</label>
-                    <input type="text" id="label" name="label" class="form-control" placeholder="Menu Label" value="{{ old('label') }}" required autofocus>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="form-group">
-                    <label for="icon">@lang('form.menu.icon')</label>
-                    <input type="text" id="icon" name="icon" class="form-control" placeholder="Menu Icon" value="{{ old('icon') }}" required autofocus>
+                    <input type="text" id="label" name="label" class="form-control" placeholder="@lang('form.menu.placeholder.label')" value="{{ old('label') }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="ordering">@lang('form.menu.ordering')</label>
-                    <input type="number" id="ordering" name="ordering" class="form-control" placeholder="Menu Order" value="{{ old('ordering') }}" min="0" required autofocus>
+                    <input type="number" id="ordering" name="ordering" class="form-control" placeholder="@lang('form.menu.placeholder.ordering')" value="{{ old('ordering') }}" min="0" required autofocus>
                 </div>
             </div>
             <div class="col-12">
                 <div class="form-group">
                     <label for="role">@lang('form.menu.role')</label>
-                    <input type="text" id="role" name="role" class="form-control" placeholder="Menu Permission" value="{{ old('role') }}" required autofocus>
+                    <input type="text" id="role" name="role" class="form-control" placeholder="@lang('form.menu.placeholder.role')" value="{{ old('role') }}" required autofocus>
                 </div>
             </div>
             <div class="col-12">

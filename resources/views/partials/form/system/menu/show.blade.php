@@ -17,12 +17,6 @@
             </div>
             <div class="col-12">
                 <div class="form-group">
-                    <label for="icon">@lang('form.menu.icon')</label>
-                    <input type="text" id="icon" name="icon" class="form-control" value="{{ $menu->icon }}" readonly disabled>
-                </div>
-            </div>
-            <div class="col-12">
-                <div class="form-group">
                     <label for="ordering">@lang('form.menu.ordering')</label>
                     <input type="number" id="ordering" name="ordering" class="form-control" value="{{ $menu->ordering }}" readonly disabled>
                 </div>

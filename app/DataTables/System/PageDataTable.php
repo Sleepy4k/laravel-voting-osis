@@ -92,28 +92,28 @@ class PageDataTable extends DataTable
     {
         return [
             Column::make('id')
-                    ->title('ID')
+                    ->title(trans('table.page.id'))
                     ->addClass('text-center'),
             Column::make('name')
-                    ->title('Nama')
+                    ->title(trans('table.page.name'))
                     ->addClass('text-center'),
             Column::make('label')
-                    ->title('Label')
+                    ->title(trans('table.page.label'))
                     ->addClass('text-center'),
             Column::make('menu_id')
-                    ->title('Menu')
+                    ->title(trans('table.page.menu_id'))
                     ->addClass('text-center'),
             Column::make('route')
-                    ->title('Endpoint')
+                    ->title(trans('table.page.route'))
                     ->addClass('text-center'),
             Column::make('icon')
-                    ->title('Ikon')
+                    ->title(trans('table.page.icon'))
                     ->addClass('text-center'),
             Column::make('permission')
-                    ->title('Permission')
+                    ->title(trans('table.page.permission'))
                     ->addClass('text-center'),
             Column::computed('action')
-                    ->title('Aksi')
+                    ->title(trans('table.page.action'))
                     ->exportable(false)
                     ->printable(false)
                     ->addClass('text-center')

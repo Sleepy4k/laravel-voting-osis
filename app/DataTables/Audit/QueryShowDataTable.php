@@ -84,16 +84,16 @@ class QueryShowDataTable extends DataTable
     {
         return [
             Column::make('env')
-                    ->title('Env')
+                    ->title(trans('table.query.env'))
                     ->addClass('text-center'),
             Column::make('type')
-                    ->title('Tipe')
+                    ->title(trans('table.query.type'))
                     ->addClass('text-center'),
             Column::make('timestamp')
-                    ->title('Tanggal')
+                    ->title(trans('table.query.timestamp'))
                     ->addClass('text-center'),
             Column::make('message')
-                    ->title('Pesan')
+                    ->title(trans('table.query.message'))
                     ->addClass('text-center')
         ];
     }
