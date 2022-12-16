@@ -24,6 +24,21 @@ class ApplicationController extends WebController
     }
 
     /**
+     * Show the form for creating a new resource.
+     *
+     * @param  \App\Services\Web\System\ApplicationService  $service
+     * @return \Illuminate\Http\Response
+     */
+    public function create(ApplicationService $service)
+    {
+        try {
+            return view('pages.system.application.create', $service->create());
+        } catch (\Throwable $th) {
+            return $this->redirectError($th);
+        }
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\Web\System\Application\StoreRequest  $request
