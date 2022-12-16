@@ -47,6 +47,8 @@ class Kernel extends HttpKernel
             \RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace::class,
             \RenatoMarinho\LaravelPageSpeed\Middleware\TrimUrls::class,
             // \RenatoMarinho\LaravelPageSpeed\Middleware\DeferJavascript::class,
+
+            'language',
         ],
 
         'api' => [
@@ -77,6 +79,8 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         'jsonify' => \App\Http\Middleware\Jsonify::class,
+
+        'language' => \App\Http\Middleware\Language::class,
 
         'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
