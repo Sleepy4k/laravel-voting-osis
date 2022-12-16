@@ -102,6 +102,8 @@ class PageService extends WebService
      */
     public function destroy($id)
     {
+        $this->pageInterface->deleteById($id);
+
         toastr()->success('Data menu berhasil di hapus', 'System');
 
         return true;

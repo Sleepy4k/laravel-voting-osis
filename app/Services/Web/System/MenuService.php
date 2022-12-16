@@ -99,6 +99,8 @@ class MenuService extends WebService
      */
     public function destroy($id)
     {
+        $this->menuInterface->deleteById($id);
+
         toastr()->success('Data menu berhasil di hapus', 'System');
 
         return true;
