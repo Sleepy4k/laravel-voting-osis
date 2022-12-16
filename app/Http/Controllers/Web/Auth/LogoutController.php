@@ -9,6 +9,16 @@ use App\Services\Web\Auth\LogoutService;
 class LogoutController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->routeName = 'main.dashboard.index';
+    }
+
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -19,7 +29,7 @@ class LogoutController extends WebController
         try {
             $service->store($request);
     
-            return to_route('main.dashboard.index');
+            return to_route($this->routeName);
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

@@ -10,6 +10,17 @@ use App\DataTables\Audit\SystemShowDataTable;
 class SystemController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->indexView = 'pages.audit.system.index';
+        $this->showView = 'pages.audit.system.show';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\Audit\SystemService  $service
@@ -19,7 +30,7 @@ class SystemController extends WebController
     public function index(SystemService $service, SystemDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.audit.system.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -36,7 +47,7 @@ class SystemController extends WebController
     public function show(SystemService $service, SystemShowDataTable $dataTable, $name)
     {
         try {
-            return $dataTable->render('pages.audit.system.show', $service->show($name));
+            return $dataTable->render($this->showView, $service->show($name));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

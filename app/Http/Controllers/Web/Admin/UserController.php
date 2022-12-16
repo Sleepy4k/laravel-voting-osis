@@ -11,6 +11,20 @@ use App\Http\Requests\Web\Admin\User\UpdateRequest;
 class UserController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->routeName = 'admin.user.index';
+        $this->indexView = 'pages.admin.user.index';
+        $this->createView = 'pages.admin.user.create';
+        $this->showView = 'pages.admin.user.show';
+        $this->editView = 'pages.admin.user.edit';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\Admin\UserService  $service
@@ -20,7 +34,7 @@ class UserController extends WebController
     public function index(UserService $service, UserDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.admin.user.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -35,7 +49,7 @@ class UserController extends WebController
     public function create(UserService $service)
     {
         try {
-            return view('pages.admin.user.create', $service->create());
+            return view($this->createView, $service->create());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -51,7 +65,7 @@ class UserController extends WebController
     public function store(StoreRequest $request, UserService $service)
     {
         try {
-            return $service->store($request->validated()) ? to_route('admin.user.index') : back();
+            return $service->store($request->validated()) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -67,7 +81,7 @@ class UserController extends WebController
     public function show(UserService $service, $id)
     {
         try {
-            return view('pages.admin.user.show', $service->show($id));
+            return view($this->showView, $service->show($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -83,7 +97,7 @@ class UserController extends WebController
     public function edit(UserService $service, $id)
     {
         try {
-            return view('pages.admin.user.edit', $service->edit($id));
+            return view($this->editView, $service->edit($id));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -100,7 +114,7 @@ class UserController extends WebController
     public function update(UpdateRequest $request, UserService $service, $id)
     {
         try {
-            return $service->update($request->validated(), $id) ? to_route('admin.user.index') : back();
+            return $service->update($request->validated(), $id) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -118,7 +132,7 @@ class UserController extends WebController
         try {
             $service->destroy($id);
     
-            return to_route('admin.user.index');
+            return to_route($this->routeName);
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

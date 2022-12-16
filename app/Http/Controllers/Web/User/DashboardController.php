@@ -9,6 +9,17 @@ use App\Http\Requests\Web\User\Dashboard\StoreRequest;
 class DashboardController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->indexView = 'pages.user.dashboard';
+        $this->createView = 'pages.user.success';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\User\DashboardService  $service
@@ -17,7 +28,7 @@ class DashboardController extends WebController
     public function index(DashboardService $service)
     {
         try {
-            return view('pages.user.dashboard', $service->index());
+            return view($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -33,7 +44,7 @@ class DashboardController extends WebController
     public function store(StoreRequest $request, DashboardService $service)
     {
         try {
-            return $service->store($request->validated()) ? view('pages.user.success') : back();
+            return $service->store($request->validated()) ? view($this->createView) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

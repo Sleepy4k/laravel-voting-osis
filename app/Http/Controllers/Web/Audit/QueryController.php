@@ -10,6 +10,17 @@ use App\DataTables\Audit\QueryShowDataTable;
 class QueryController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->indexView = 'pages.audit.query.index';
+        $this->showView = 'pages.audit.query.show';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\Audit\QueryService  $service
@@ -19,7 +30,7 @@ class QueryController extends WebController
     public function index(QueryService $service, QueryDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.audit.query.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -36,7 +47,7 @@ class QueryController extends WebController
     public function show(QueryService $service, QueryShowDataTable $dataTable, $name)
     {
         try {
-            return $dataTable->render('pages.audit.query.show', $service->show($name));
+            return $dataTable->render($this->showView, $service->show($name));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

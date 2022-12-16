@@ -9,6 +9,17 @@ use App\DataTables\Audit\ModelDataTable;
 class ModelController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->indexView = 'pages.audit.model.index';
+        $this->showView = 'pages.audit.model.show';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\Audit\ModelService  $service
@@ -18,7 +29,7 @@ class ModelController extends WebController
     public function index(ModelService $service, ModelDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.audit.model.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -34,7 +45,7 @@ class ModelController extends WebController
     public function show(ModelService $service, $name)
     {
         try {
-            return view('pages.audit.model.show', $service->show($name));
+            return view($this->showView, $service->show($name));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

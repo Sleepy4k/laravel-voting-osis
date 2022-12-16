@@ -9,6 +9,18 @@ use App\Http\Requests\Web\System\Application\StoreRequest;
 class ApplicationController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->routeName = 'admin.system.application.index';
+        $this->indexView = 'pages.system.application.index';
+        $this->createView = 'pages.system.application.create';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\System\ApplicationService  $service
@@ -17,7 +29,7 @@ class ApplicationController extends WebController
     public function index(ApplicationService $service)
     {
         try {
-            return view('pages.system.application.index', $service->index());
+            return view($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -32,7 +44,7 @@ class ApplicationController extends WebController
     public function create(ApplicationService $service)
     {
         try {
-            return view('pages.system.application.create', $service->create());
+            return view($this->createView, $service->create());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -48,7 +60,7 @@ class ApplicationController extends WebController
     public function store(StoreRequest $request, ApplicationService $service)
     {
         try {
-            return $service->store($request->validated()) ? to_route('admin.system.application.index') : back();
+            return $service->store($request->validated()) ? to_route($this->routeName) : back();
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

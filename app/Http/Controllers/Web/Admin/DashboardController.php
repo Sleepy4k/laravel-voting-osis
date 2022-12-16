@@ -8,6 +8,16 @@ use App\Services\Web\Admin\DashboardService;
 class DashboardController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->indexView = 'pages.admin.dashboard';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\Admin\DashboardService  $service
@@ -16,7 +26,7 @@ class DashboardController extends WebController
     public function index(DashboardService $service)
     {
         try {
-            return view('pages.admin.dashboard', $service->index());
+            return view($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }

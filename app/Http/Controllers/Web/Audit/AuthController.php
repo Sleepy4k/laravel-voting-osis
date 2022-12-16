@@ -9,6 +9,17 @@ use App\DataTables\Audit\AuthDataTable;
 class AuthController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->indexView = 'pages.audit.auth.index';
+        $this->showView = 'pages.audit.auth.show';
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Web\Audit\AuthService  $service
@@ -18,7 +29,7 @@ class AuthController extends WebController
     public function index(AuthService $service, AuthDataTable $dataTable)
     {
         try {
-            return $dataTable->render('pages.audit.auth.index', $service->index());
+            return $dataTable->render($this->indexView, $service->index());
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
@@ -34,7 +45,7 @@ class AuthController extends WebController
     public function show(AuthService $service, $name)
     {
         try {
-            return view('pages.audit.auth.show', $service->show($name));
+            return view($this->showView, $service->show($name));
         } catch (\Throwable $th) {
             return $this->redirectError($th);
         }
