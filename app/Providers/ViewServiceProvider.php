@@ -28,7 +28,7 @@ class ViewServiceProvider extends ServiceProvider
             $view->with('sidebar', Menu::with('pages')->orderBy('ordering')->get());
         });
         
-        view()->composer(['partials.footer.admin','partials.head.meta','partials.head.title'], function ($view) {
+        view()->composer(['partials.footer.admin','partials.head.meta','partials.head.title','partials.head.icon'], function ($view) {
             $view->with('meta', cache()->get('application.1'));
         });
     }
