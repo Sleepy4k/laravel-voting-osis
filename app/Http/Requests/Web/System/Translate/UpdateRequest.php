@@ -32,4 +32,19 @@ class UpdateRequest extends WebRequest
             'lang_en' => ['required','string','max:255']
         ];
     }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'group' => trans('form.translate.group'),
+            'key' => trans('form.translate.key'),
+            'lang_id' => trans('form.translate.lang_id'),
+            'lang_en' => trans('form.translate.lang_en')
+        ];
+    }
 }

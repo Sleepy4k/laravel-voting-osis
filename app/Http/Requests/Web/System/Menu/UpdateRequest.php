@@ -28,9 +28,23 @@ class UpdateRequest extends WebRequest
         return [
             'name' => ['required','string','max:255','unique:menus,name,'.$id],
             'label' => ['required','string','max:255'],
-            'icon' => ['required','string','max:255'],
             'ordering' => ['required','string','max:255'],
             'role' => ['required','string','max:255']
+        ];
+    }
+
+    /**
+     * Get custom attributes for validator errors.
+     *
+     * @return array
+     */
+    public function attributes()
+    {
+        return [
+            'name' => trans('form.menu.name'),
+            'label' => trans('form.menu.label'),
+            'ordering' => trans('form.menu.ordering'),
+            'role' => trans('form.menu.role')
         ];
     }
 }

@@ -39,11 +39,11 @@ class StoreRequest extends WebRequest
     public function attributes()
     {
         return [
-            'chairman' => 'Nama Ketua',
-            'vice_chairman' => 'Nama Wakil Ketua',
-            'image' => 'Foto Calon',
-            'vision' => 'Visi',
-            'mission' => 'Misi'
+            'name' => trans('form.user.name'),
+            'nis' => trans('form.user.nis'),
+            'grade' => trans('form.user.grade'),
+            'password' => trans('form.user.password'),
+            'password_confirmation' => trans('form.user.password_confirmation')
         ];
     }
 }

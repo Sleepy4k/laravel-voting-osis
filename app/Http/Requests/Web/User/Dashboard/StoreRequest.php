@@ -28,17 +28,4 @@ class StoreRequest extends WebRequest
             'candidate_id' => ['required','numeric','exists:candidates,id']
         ];
     }
-
-    /**
-     * Get custom attributes for validator errors.
-     *
-     * @return array
-     */
-    public function attributes()
-    {
-        return [
-            'user_id' => 'ID Pemilih',
-            'candidate_id' => 'ID Kandidat'
-        ];
-    }
 }

@@ -42,11 +42,11 @@ class UpdateRequest extends WebRequest
     public function attributes()
     {
         return [
-            'chairman' => 'Nama Ketua',
-            'vice_chairman' => 'Nama Wakil Ketua',
-            'image' => 'Foto Calon',
-            'vision' => 'Visi',
-            'mission' => 'Misi'
+            'chairman' => trans('form.candidate.chairman'),
+            'vice_chairman' => trans('form.candidate.vice_chairman'),
+            'image' => trans('form.candidate.image'),
+            'vision' => trans('form.candidate.vision'),
+            'mission' => trans('form.candidate.mission')
         ];
     }
 }
