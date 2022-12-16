@@ -1,3 +1,3 @@
 <a class="navbar-brand" href="{{ url('/') }}">
-    {{ config('app.name') }}
+    {{ isset($meta->app_name) ? $meta->app_name : config('app.name') }}
 </a>
