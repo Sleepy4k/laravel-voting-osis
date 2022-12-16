@@ -17,10 +17,6 @@ class WebController extends Controller
     {
         $this->sendReportLog('error', $error->getMessage());
 
-        if (auth()->check() && auth()->user()->getRoleNames()[0] == 'superadmin') {
-            toastr()->error($error->getMessage(), 'Debug');
-        }
-
         return back();
     }
 }

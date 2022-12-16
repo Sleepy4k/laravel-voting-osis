@@ -13,7 +13,7 @@ class PageController extends WebController
     /**
      * Display a listing of the resource.
      *
-     * @param  \pp\Services\Web\System\PageService  $service
+     * @param  \App\Services\Web\System\PageService  $service
      * @param  \App\DataTables\System\PageDataTable  $dataTable
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +29,7 @@ class PageController extends WebController
     /**
      * Show the form for creating a new resource.
      *
-     * @param  \pp\Services\Web\System\PageService  $service
+     * @param  \App\Services\Web\System\PageService  $service
      * @return \Illuminate\Http\Response
      */
     public function create(PageService $service)
@@ -45,7 +45,7 @@ class PageController extends WebController
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\Web\System\Page\StoreRequest  $request
-     * @param  \pp\Services\Web\System\PageService  $service
+     * @param  \App\Services\Web\System\PageService  $service
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request, PageService $service)
@@ -60,7 +60,7 @@ class PageController extends WebController
     /**
      * Display the specified resource.
      *
-     * @param  \pp\Services\Web\System\PageService  $service
+     * @param  \App\Services\Web\System\PageService  $service
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -76,7 +76,7 @@ class PageController extends WebController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \pp\Services\Web\System\PageService  $service
+     * @param  \App\Services\Web\System\PageService  $service
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -93,7 +93,7 @@ class PageController extends WebController
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\Web\System\Page\UpdateRequest  $request
-     * @param  \pp\Services\Web\System\PageService  $service
+     * @param  \App\Services\Web\System\PageService  $service
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -109,7 +109,7 @@ class PageController extends WebController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \pp\Services\Web\System\PageService  $service
+     * @param  \App\Services\Web\System\PageService  $service
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

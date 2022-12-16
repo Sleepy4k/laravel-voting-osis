@@ -13,7 +13,7 @@ class MenuController extends WebController
     /**
      * Display a listing of the resource.
      *
-     * @param  \pp\Services\Web\System\MenuService  $service
+     * @param  \App\Services\Web\System\MenuService  $service
      * @param  \App\DataTables\System\MenuDataTable  $dataTable
      * @return \Illuminate\Http\Response
      */
@@ -29,7 +29,7 @@ class MenuController extends WebController
     /**
      * Show the form for creating a new resource.
      *
-     * @param  \pp\Services\Web\System\MenuService  $service
+     * @param  \App\Services\Web\System\MenuService  $service
      * @return \Illuminate\Http\Response
      */
     public function create(MenuService $service)
@@ -45,7 +45,7 @@ class MenuController extends WebController
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\Web\System\Menu\StoreRequest  $request
-     * @param  \pp\Services\Web\System\MenuService  $service
+     * @param  \App\Services\Web\System\MenuService  $service
      * @return \Illuminate\Http\Response
      */
     public function store(StoreRequest $request, MenuService $service)
@@ -60,7 +60,7 @@ class MenuController extends WebController
     /**
      * Display the specified resource.
      *
-     * @param  \pp\Services\Web\System\MenuService  $service
+     * @param  \App\Services\Web\System\MenuService  $service
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -76,7 +76,7 @@ class MenuController extends WebController
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \pp\Services\Web\System\MenuService  $service
+     * @param  \App\Services\Web\System\MenuService  $service
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -93,7 +93,7 @@ class MenuController extends WebController
      * Update the specified resource in storage.
      *
      * @param  \App\Http\Requests\Web\System\Menu\UpdateRequest  $request
-     * @param  \pp\Services\Web\System\MenuService  $service
+     * @param  \App\Services\Web\System\MenuService  $service
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
@@ -109,7 +109,7 @@ class MenuController extends WebController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \pp\Services\Web\System\MenuService  $service
+     * @param  \App\Services\Web\System\MenuService  $service
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */

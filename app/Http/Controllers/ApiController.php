@@ -17,12 +17,6 @@ class ApiController extends Controller
     {
         $this->sendReportLog('error', $error->getMessage());
 
-        if (auth()->check() && auth()->user()->getRoleNames()[0] != 'user') {
-            return $this->createResponse('Server Error', [
-                'error' => $error->getMessage()
-            ], 500);
-        }
-
         return $this->createResponse('Server Error', [
             'error' => 'Internal server error'
         ], 500);
