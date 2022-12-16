@@ -24,13 +24,6 @@ return [
            'icon' => 'bi bi-people-fill'
         ],
         [
-            'name' => 'translate',
-            'label' => 'sidebar.admin.page.translate',
-            'menu_id' => 2,
-            'route' => 'admin.system.translate.index',
-            'icon' => 'bi bi-grid-fill'
-        ],
-        [
             'name' => 'menu',
             'label' => 'sidebar.admin.page.menu',
             'menu_id' => 2,
@@ -42,6 +35,20 @@ return [
             'label' => 'sidebar.admin.page.page',
             'menu_id' => 2,
             'route' => 'admin.system.page.index',
+            'icon' => 'bi bi-grid-fill'
+        ],
+        [
+            'name' => 'translate',
+            'label' => 'sidebar.admin.page.translate',
+            'menu_id' => 2,
+            'route' => 'admin.system.translate.index',
+            'icon' => 'bi bi-grid-fill'
+        ],
+        [
+            'name' => 'application',
+            'label' => 'sidebar.admin.page.application',
+            'menu_id' => 2,
+            'route' => 'admin.system.application.index',
             'icon' => 'bi bi-grid-fill'
         ],
         [

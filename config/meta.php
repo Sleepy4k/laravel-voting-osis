@@ -16,7 +16,7 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'description' => env('META_DESCRIPTION', 'System penjualan online tiket konser'),
+    'description' => env('META_DESCRIPTION', 'System voting untuk kandidat osis sekolah'),
 
     /*
     |--------------------------------------------------------------------------
@@ -24,5 +24,5 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'keyword' => env('META_KEYWORD', 'eticket, concert, free'),
+    'keyword' => env('META_KEYWORD', 'osis, voting, voting osis'),
 ];
