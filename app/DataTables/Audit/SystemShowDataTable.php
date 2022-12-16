@@ -84,16 +84,16 @@ class SystemShowDataTable extends DataTable
     {
         return [
             Column::make('env')
-                    ->title('Env')
+                    ->title(trans('table.system.env'))
                     ->addClass('text-center'),
             Column::make('type')
-                    ->title('Tipe')
+                    ->title(trans('table.system.type'))
                     ->addClass('text-center'),
             Column::make('timestamp')
-                    ->title('Tanggal')
+                    ->title(trans('table.system.timestamp'))
                     ->addClass('text-center'),
             Column::make('message')
-                    ->title('Pesan')
+                    ->title(trans('table.system.message'))
                     ->addClass('text-center')
         ];
     }

@@ -125,31 +125,33 @@ class AuthDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('id')
+                    ->title(trans('table.auth.id'))
+                    ->addClass('text-center'),
             Column::make('log_name')
-                    ->title('Nama')
+                    ->title(trans('table.auth.log_name'))
                     ->addClass('text-center'),
             Column::make('description')
-                    ->title('Deskripsi')
+                    ->title(trans('table.auth.description'))
                     ->addClass('text-center'),
             Column::make('event')
-                    ->title('Kategori')
+                    ->title(trans('table.auth.event'))
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::computed('subject')
-                    ->title('Subject')
+                    ->title(trans('table.auth.subject'))
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::computed('causer')
-                    ->title('Penyebab')
+                    ->title(trans('table.auth.causer'))
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::make('properties')
-                    ->title('Properti')
+                    ->title(trans('table.auth.properties'))
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::computed('created_at')
-                    ->title('Terjadi Pada')
+                    ->title(trans('table.auth.created_at'))
                     ->addClass('text-center')
         ];
     }

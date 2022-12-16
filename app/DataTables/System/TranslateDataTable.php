@@ -99,22 +99,22 @@ class TranslateDataTable extends DataTable
     {
         return [
             Column::make('id')
-                    ->title('ID')
+                    ->title(trans('table.translate.id'))
                     ->addClass('text-center'),
             Column::make('group')
-                    ->title('Group')
+                    ->title(trans('table.translate.group'))
                     ->addClass('text-center'),
             Column::make('key')
-                    ->title('Nama')
+                    ->title(trans('table.translate.key'))
                     ->addClass('text-center'),
             Column::computed('lang_id')
-                    ->title('Indonesia')
+                    ->title(trans('table.translate.lang_id'))
                     ->addClass('text-center'),
             Column::computed('lang_en')
-                    ->title('English')
+                    ->title(trans('table.translate.lang_en'))
                     ->addClass('text-center'),
             Column::computed('action')
-                    ->title('Aksi')
+                    ->title(trans('table.translate.action'))
                     ->exportable(false)
                     ->printable(false)
                     ->addClass('text-center')

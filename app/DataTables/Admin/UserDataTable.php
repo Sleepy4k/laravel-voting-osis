@@ -91,21 +91,23 @@ class UserDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('id')
+                    ->title(trans('table.user.id'))
+                    ->addClass('text-center'),
             Column::make('name')
-                    ->title('Nama')
+                    ->title(trans('table.user.name'))
                     ->addClass('text-center'),
             Column::make('nis')
-                    ->title('NIS')
+                    ->title(trans('table.user.nis'))
                     ->addClass('text-center'),
             Column::make('grade')
-                    ->title('Kelas')
+                    ->title(trans('table.user.grade'))
                     ->addClass('text-center'),
             Column::make('voting_status')
-                    ->title('Status')
+                    ->title(trans('table.user.voting_status'))
                     ->addClass('text-center'),
             Column::make('action')
-                    ->title('Aksi')
+                    ->title(trans('table.user.action'))
                     ->exportable(false)
                     ->printable(false)
                     ->searchable(false)

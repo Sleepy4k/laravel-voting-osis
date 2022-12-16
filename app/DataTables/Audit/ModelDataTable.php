@@ -124,31 +124,33 @@ class ModelDataTable extends DataTable
     public function getColumns(): array
     {
         return [
-            Column::make('id'),
+            Column::make('id')
+                    ->title(trans('table.model.id'))
+                    ->addClass('text-center'),
             Column::make('log_name')
-                    ->title('Nama')
+                    ->title(trans('table.model.log_name'))
                     ->addClass('text-center'),
             Column::make('description')
-                    ->title('Deskripsi')
+                    ->title(trans('table.model.description'))
                     ->addClass('text-center'),
             Column::make('event')
-                    ->title('Kategori')
+                    ->title(trans('table.model.event'))
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::computed('subject')
-                    ->title('Subject')
+                    ->title(trans('table.model.subject'))
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::computed('causer')
-                    ->title('Penyebab')
+                    ->title(trans('table.model.causer'))
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::make('properties')
-                    ->title('Properti')
+                    ->title(trans('table.model.properties'))
                     ->searchable(false)
                     ->addClass('text-center'),
             Column::computed('created_at')
-                    ->title('Terjadi Pada')
+                    ->title(trans('table.model.created_at'))
                     ->addClass('text-center')
         ];
     }

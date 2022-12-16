@@ -87,22 +87,22 @@ class SystemDataTable extends DataTable
     {
         return [
             Column::make('name')
-                    ->title('Nama')
+                    ->title(trans('table.system.name'))
                     ->addClass('text-center'),
             Column::make('size')
-                    ->title('Ukuran')
+                    ->title(trans('table.system.size'))
                     ->addClass('text-center'),
             Column::make('type')
-                    ->title('Tipe')
+                    ->title(trans('table.system.type'))
                     ->addClass('text-center'),
             Column::make('content')
-                    ->title('Konten')
+                    ->title(trans('table.system.content'))
                     ->addClass('text-center'),
             Column::make('last_updated')
-                    ->title('Terakhir Update')
+                    ->title(trans('table.system.last_updated'))
                     ->addClass('text-center'),
             Column::make('action')
-                    ->title('Aksi')
+                    ->title(trans('table.system.action'))
                     ->exportable(false)
                     ->printable(false)
                     ->searchable(false)
