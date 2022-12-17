@@ -13,9 +13,7 @@ class UserService extends WebService
      */
     public function index()
     {
-        return [
-            'users' => $this->userInterface->all()
-        ];
+        return [];
     }
 
     /**
@@ -26,6 +24,7 @@ class UserService extends WebService
     public function create()
     {
         return [
+            'roles' => $this->roleInterface->all(),
             'grades' => $this->gradeInterface->all()
         ];
     }
@@ -71,6 +70,7 @@ class UserService extends WebService
     public function edit($id)
     {
         return [
+            'roles' => $this->roleInterface->all(),
             'grades' => $this->gradeInterface->all(),
             'user' => $this->userInterface->findById($id)
         ];

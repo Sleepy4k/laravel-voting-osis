@@ -18,9 +18,13 @@
             <div class="col-12">
                 <div class="form-group">
                     <label for="grade">@lang('form.user.grade')</label>
-                    <select id="grade" name="grade" class="form-select" readonly disabled>
-                        <option value="{{ $user->grade }}">{{ $user->grade }}</option>
-                    </select>
+                    <input type="text" id="grade" name="grade" class="form-control" value="{{ $user->grade }}" readonly disabled>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label for="language">@lang('form.user.language')</label>
+                    <input type="text" id="language" name="language" class="form-control" value="{{ $user->language }}" readonly disabled>
                 </div>
             </div>
             <div class="col-12">
@@ -33,6 +37,14 @@
                     @endif
                 </div>
             </div>
+            @role('superadmin')
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="role">@lang('form.user.role')</label>
+                        <input type="text" id="role" name="role" class="form-control" value="{{ $user->getRoleNames()[0] }}" readonly disabled>
+                    </div>
+                </div>
+            @endrole
             <div class="col-12">
                 <div class="col-12 d-flex justify-content-end">
                     @if ($user->voting_status == 'true')

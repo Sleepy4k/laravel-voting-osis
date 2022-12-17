@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Web\Admin\User;
 
+use App\Rules\LanguageRule;
 use App\Http\Requests\WebRequest;
 
 class UpdateRequest extends WebRequest
@@ -28,7 +29,9 @@ class UpdateRequest extends WebRequest
         return [
             'name' => ['required','string','max:255'],
             'nis' => ['required','string','max:255','unique:users,nis,'.$id],
-            'grade' => ['required','string','max:255','exists:grades,name']
+            'grade' => ['required','string','max:255','exists:grades,name'],
+            'language' => ['required','string','max:255',new LanguageRule],
+            'role' => ['nullable','string','max:255','exists:roles,id']
         ];
     }
 

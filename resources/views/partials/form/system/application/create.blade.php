@@ -17,10 +17,10 @@
                             @if (file_exists(public_path('storage/image/'.$application->app_icon)))
                                 <img src="{{ asset('storage/image/'.$application->app_icon) }}" class="show-image-application img-fluid mb-3 col-sm-5" style="max-width: 12.5em; max-height: 12.5em;">
                             @else
-                                <img src="{{ asset('assets/images/logo/favicon.png') }}" class="show-image-candidate img-fluid mb-3 col-sm-5" style="max-width: 12.5em; max-height: 12.5em;">
+                                <img src="{{ asset('assets/images/logo/favicon.png') }}" class="show-image-application img-fluid mb-3 col-sm-5" style="max-width: 12.5em; max-height: 12.5em;">
                             @endif
                         @else
-                            <img src="{{ asset('assets/images/logo/favicon.png') }}" class="show-image-candidate img-fluid mb-3 col-sm-5" style="max-width: 12.5em; max-height: 12.5em;">
+                            <img src="{{ asset('assets/images/logo/favicon.png') }}" class="show-image-application img-fluid mb-3 col-sm-5" style="max-width: 12.5em; max-height: 12.5em;">
                         @endif
                     </div>
                     <input type="file" id="app_icon" name="app_icon" onchange="ShowImageApplication()" class="logo-application form-control">
