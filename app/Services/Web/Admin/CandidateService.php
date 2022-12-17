@@ -13,9 +13,7 @@ class CandidateService extends WebService
      */
     public function index()
     {
-        return [
-            'candidates' => $this->candidateInterface->all()
-        ];
+        return [];
     }
 
     /**
