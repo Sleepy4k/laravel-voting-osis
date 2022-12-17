@@ -43,7 +43,11 @@ class UserDataTable extends DataTable
      */
     public function query(User $model): QueryBuilder
     {
-        return $model->newQuery();
+        if (auth()->user()->getRoleNames()[0] == 'superadmin') {
+            return $model->newQuery();
+        }
+        
+        return $model->role('user');
     }
 
     /**
