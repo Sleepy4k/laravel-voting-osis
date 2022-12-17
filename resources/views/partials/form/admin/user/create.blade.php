@@ -27,6 +27,28 @@
             </div>
             <div class="col-12">
                 <div class="form-group">
+                    <label for="language">@lang('form.user.language')</label>
+                    <select id="language" name="language" class="form-select" required autofocus>
+                        @foreach (config('language.list') as $language)
+                            <option value="{{ $language }}">{{ $language }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            @role('superadmin')
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="role">@lang('form.user.role')</label>
+                        <select id="role" name="role" class="form-select" required autofocus>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+            @endrole
+            <div class="col-12">
+                <div class="form-group">
                     <label for="password">@lang('form.user.password')</label>
                     <input type="password" id="password" name="password" class="form-control" placeholder="@lang('form.user.placeholder.password')" required autofocus>
                 </div>
