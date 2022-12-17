@@ -43,7 +43,7 @@ class UserRepository extends EloquentRepository implements UserInterface
 
         $model = $this->model->create($payload);
 
-        if (array_key_exists('role', $payload)) {
+        if ($role) {
             $model->assignRole($role);
         } else {
             $model->assignRole('user');
@@ -69,7 +69,7 @@ class UserRepository extends EloquentRepository implements UserInterface
 
         $model = $this->findById($modelId);
 
-        if (array_key_exists('role', $payload)) {
+        if ($role) {
             $model->syncRoles($role);
         }
 
