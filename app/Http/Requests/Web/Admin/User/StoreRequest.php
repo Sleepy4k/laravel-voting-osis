@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Web\Admin\User;
 
+use App\Rules\LanguageRule;
 use App\Http\Requests\WebRequest;
 
 class StoreRequest extends WebRequest
@@ -27,6 +28,8 @@ class StoreRequest extends WebRequest
             'name' => ['required','string','max:255'],
             'nis' => ['required','string','max:255','unique:users,nis'],
             'grade' => ['required','string','max:255','exists:grades,name'],
+            'language' => ['required','string','max:255',new LanguageRule],
+            'role' => ['nullable','string','max:255','exists:roles,id'],
             'password' => ['required','string','min:8','max:255','confirmed']
         ];
     }
