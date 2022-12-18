@@ -3,12 +3,15 @@
 namespace App\Repositories\Models;
 
 use App\Models\User;
+use App\Traits\SystemLog;
 use App\Contracts\Models\UserInterface;
 use Illuminate\Database\Eloquent\Model;
 use App\Repositories\EloquentRepository;
 
 class UserRepository extends EloquentRepository implements UserInterface
 {
+    use SystemLog;
+
     /**
      * @var Model
      */
@@ -32,21 +35,27 @@ class UserRepository extends EloquentRepository implements UserInterface
      */
     public function create(array $payload): ?Model
     {
-        if (array_key_exists('role', $payload)) {
-            $role = $payload['role'];
-
-            unset($payload['role']);
+        try {
+            if (array_key_exists('role', $payload)) {
+                $role = $payload['role'];
+    
+                unset($payload['role']);
+            }
+    
+            $model = $this->model->create($payload);
+    
+            if (!empty($role)) {
+                $model->assignRole($role);
+            } else {
+                $model->assignRole('user');
+            }
+    
+            return $model->fresh();
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
-
-        $model = $this->model->create($payload);
-
-        if ($role) {
-            $model->assignRole($role);
-        } else {
-            $model->assignRole('user');
-        }
-
-        return $model->fresh();
     }
     
     /**
@@ -58,18 +67,24 @@ class UserRepository extends EloquentRepository implements UserInterface
      */
     public function update(int $modelId, array $payload): bool
     {
-        if (array_key_exists('role', $payload)) {
-            $role = $payload['role'];
-
-            unset($payload['role']);
+        try {
+            if (array_key_exists('role', $payload)) {
+                $role = $payload['role'];
+    
+                unset($payload['role']);
+            }
+    
+            $model = $this->findById($modelId);
+    
+            if (!empty($role)) {
+                $model->syncRoles($role);
+            }
+    
+            return $model->update($payload);
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
-
-        $model = $this->findById($modelId);
-
-        if ($role) {
-            $model->syncRoles($role);
-        }
-
-        return $model->update($payload);
     }
 }
