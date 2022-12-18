@@ -39,17 +39,7 @@ class ApplicationService extends WebService
     public function store($request)
     {
         try {
-            $application = $this->applicationInterface->findById(1);
-
-            if (empty($application)) {
-                return false;
-            }
-
-            if (!empty($request['app_icon'])) {
-                $request['app_icon'] = $this->updateSingleFile('image', $request['app_icon'], $application->app_icon);
-            }
-            
-            $application->update($request);
+            $this->applicationInterface->update(1, $request);
 
             toastr()->success('Data aplikasi berhasil di tambahkan', 'System');
 
