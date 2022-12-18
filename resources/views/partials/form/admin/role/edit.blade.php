@@ -4,7 +4,7 @@
     @endpush
 @endonce
 
-<form class="form form-vertical" action="{{ route('admin.role.update', $role->id) }}" method="POST" enctype="multipart/form-data">
+<form class="form form-vertical" action="{{ route('admin.role.update', $role->id) }}" method="POST">
     @csrf
     @method('put')
     
