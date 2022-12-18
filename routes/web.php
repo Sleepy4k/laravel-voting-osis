@@ -69,7 +69,9 @@ Route::middleware('auth')->group(function() {
 
         Route::resources([
             'user' => Admin\UserController::class,
+            'role' => Admin\RoleController::class,
             'candidate' => Admin\CandidateController::class,
+            'permission' => Admin\PermissionController::class
         ]);
 
         // System Route
