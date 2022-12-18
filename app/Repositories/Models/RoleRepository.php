@@ -32,10 +32,16 @@ class RoleRepository extends EloquentRepository implements RoleInterface
      */
     public function create(array $payload): ?Model
     {
+        if (array_key_exists('permission', $payload)) {
+            $permission = $payload['permission'];
+
+            unset($payload['permission']);
+        }
+
         $model = $this->model->create($payload);
 
-        if (array_key_exists('permission', $payload)) {
-            $model->syncPermissions($payload['permission']);
+        if ($permission) {
+            $model->syncPermissions($permission);
         }
 
         return $model->fresh();
@@ -50,10 +56,16 @@ class RoleRepository extends EloquentRepository implements RoleInterface
      */
     public function update(int $modelId, array $payload): bool
     {
+        if (array_key_exists('permission', $payload)) {
+            $permission = $payload['permission'];
+
+            unset($payload['permission']);
+        }
+
         $model = $this->findById($modelId);
 
-        if (array_key_exists('permission', $payload)) {
-            $model->syncPermissions($payload['permission']);
+        if ($permission) {
+            $model->syncPermissions($permission);
         }
 
         return $model->update($payload);
