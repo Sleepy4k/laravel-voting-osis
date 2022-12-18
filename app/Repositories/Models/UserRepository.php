@@ -3,15 +3,12 @@
 namespace App\Repositories\Models;
 
 use App\Models\User;
-use App\Traits\UploadFile;
 use App\Contracts\Models\UserInterface;
 use Illuminate\Database\Eloquent\Model;
 use App\Repositories\EloquentRepository;
 
 class UserRepository extends EloquentRepository implements UserInterface
 {
-    use UploadFile;
-
     /**
      * @var Model
      */
