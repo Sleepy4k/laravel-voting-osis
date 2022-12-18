@@ -35,10 +35,6 @@ class CandidateService extends WebService
     public function store($request)
     {
         try {
-            if (!empty($request['image'])) {
-                $request['image'] = $this->saveSingleFile('image', $request['image']);
-            }
-    
             $this->candidateInterface->create($request);
 
             toastr()->success('Data calon kandidat berhasil di tambahkan', 'System');
@@ -85,17 +81,7 @@ class CandidateService extends WebService
     public function update($request, $id)
     {
         try {
-            $candidate = $this->candidateInterface->findById($id);
-
-            if (empty($candidate)) {
-                return false;
-            }
-
-            if (!empty($request['image'])) {
-                $request['image'] = $this->updateSingleFile('image', $request['image'], $candidate->image);
-            }
-            
-            $candidate->update($request);
+            $this->candidateInterface->update($id, $request);
 
             toastr()->success('Data calon kandidat berhasil di ubah', 'System');
 
@@ -113,13 +99,7 @@ class CandidateService extends WebService
      */
     public function destroy($id)
     {
-        $candidate = $this->candidateInterface->findById($id);
-        
-        if (!empty($candidate->image)) {
-            $this->deleteFile('image', $candidate->image);
-        }
-
-        $candidate->delete();
+        $this->candidateInterface->deleteById($id);
         
         toastr()->success('Data calon kandidat berhasil di hapus', 'System');
 

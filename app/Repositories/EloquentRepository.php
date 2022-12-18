@@ -2,12 +2,15 @@
 
 namespace App\Repositories;
 
+use App\Traits\SystemLog;
 use App\Contracts\EloquentInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 
 class EloquentRepository implements EloquentInterface
 {
+    use SystemLog;
+
     /**
      * @var Model
      */
@@ -53,7 +56,9 @@ class EloquentRepository implements EloquentInterface
 
             return $model->get($columns);
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            $this->sendReportLog('error', $th->getMessage());
+
+            return false;
         }
     }
 
@@ -88,7 +93,9 @@ class EloquentRepository implements EloquentInterface
 
             return $model->select($columns)->paginate($paginate);
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
     }
 
@@ -102,7 +109,9 @@ class EloquentRepository implements EloquentInterface
         try {
             return $this->model->onlyTrashed()->get();
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
     }
     
@@ -117,7 +126,13 @@ class EloquentRepository implements EloquentInterface
      */
     public function findById(int $modelId, array $columns = ['*'], array $relations = [], array $appends = []): ?Model
     {
-        return $this->model->select($columns)->with($relations)->findOrFail($modelId)->append($appends);
+        try {
+            return $this->model->select($columns)->with($relations)->findOrFail($modelId)->append($appends);
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
+        }
     }
     
     /**
@@ -131,7 +146,13 @@ class EloquentRepository implements EloquentInterface
      */
     public function findByCustomId(array $wheres = [], array $columns = ['*'], array $relations = [], array $appends = []): ?Model
     {
-        return $this->model->select($columns)->with($relations)->where($wheres)->firstOrFail();
+        try {
+            return $this->model->select($columns)->with($relations)->where($wheres)->firstOrFail();
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
+        }
     }
 
     /**
@@ -142,7 +163,13 @@ class EloquentRepository implements EloquentInterface
      */
     public function findTrashedById(int $modelId): ?Model
     {
-        return $this->model->withTrashed()->findOrFail($modelId);
+        try {
+            return $this->model->withTrashed()->findOrFail($modelId);
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
+        }
     }
     
     /**
@@ -153,7 +180,13 @@ class EloquentRepository implements EloquentInterface
      */
     public function findTrashedByCustomId(array $wheres = []): ?Model
     {
-        return $this->model->withTrashed()->where($wheres)->firstOrFail();
+        try {
+            return $this->model->withTrashed()->where($wheres)->firstOrFail();
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
+        }
     }
 
     /**
@@ -164,7 +197,13 @@ class EloquentRepository implements EloquentInterface
      */
     public function findOnlyTrashedById(int $modelId): ?Model
     {
-        return $this->model->onlyTrashed()->findOrFail($modelId);
+        try {
+            return $this->model->onlyTrashed()->findOrFail($modelId);
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
+        }
     }
     
     /**
@@ -175,7 +214,13 @@ class EloquentRepository implements EloquentInterface
      */
     public function findOnlyTrashedByCustomId(array $wheres = []): ?Model
     {
-        return $this->model->onlyTrashed()->where($wheres)->firstOrFail();
+        try {
+            return $this->model->onlyTrashed()->where($wheres)->firstOrFail();
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
+        }
     }
 
     /**
@@ -191,7 +236,9 @@ class EloquentRepository implements EloquentInterface
     
             return $model->fresh();
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
     }
     
@@ -209,7 +256,9 @@ class EloquentRepository implements EloquentInterface
     
             return $model->update($payload);
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
     }
     
@@ -224,7 +273,9 @@ class EloquentRepository implements EloquentInterface
         try {
             return $this->findById($modelId)->delete();
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
     }
     
@@ -239,7 +290,9 @@ class EloquentRepository implements EloquentInterface
         try {
             return $this->findOnlyTrashedById($modelId)->restore();
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
     }
     
@@ -254,7 +307,9 @@ class EloquentRepository implements EloquentInterface
         try {
             return $this->findTrashedById($modelId)->forceDelete();
         } catch (\Throwable $th) {
-            return $th->getMessage();
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Models;
 
+use App\Traits\SystemLog;
 use Spatie\Permission\Models\Role;
 use App\Contracts\Models\RoleInterface;
 use Illuminate\Database\Eloquent\Model;
@@ -9,6 +10,8 @@ use App\Repositories\EloquentRepository;
 
 class RoleRepository extends EloquentRepository implements RoleInterface
 {
+    use SystemLog;
+
     /**
      * @var Model
      */
@@ -32,19 +35,25 @@ class RoleRepository extends EloquentRepository implements RoleInterface
      */
     public function create(array $payload): ?Model
     {
-        if (array_key_exists('permission', $payload)) {
-            $permission = $payload['permission'];
-
-            unset($payload['permission']);
+        try {
+            if (array_key_exists('permission', $payload)) {
+                $permission = $payload['permission'];
+    
+                unset($payload['permission']);
+            }
+    
+            $model = $this->model->create($payload);
+    
+            if (!empty($permission)) {
+                $model->syncPermissions($permission);
+            }
+    
+            return $model->fresh();
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
-
-        $model = $this->model->create($payload);
-
-        if ($permission) {
-            $model->syncPermissions($permission);
-        }
-
-        return $model->fresh();
     }
     
     /**
@@ -56,18 +65,24 @@ class RoleRepository extends EloquentRepository implements RoleInterface
      */
     public function update(int $modelId, array $payload): bool
     {
-        if (array_key_exists('permission', $payload)) {
-            $permission = $payload['permission'];
-
-            unset($payload['permission']);
+        try {
+            if (array_key_exists('permission', $payload)) {
+                $permission = $payload['permission'];
+    
+                unset($payload['permission']);
+            }
+    
+            $model = $this->findById($modelId);
+    
+            if (!empty($permission)) {
+                $model->syncPermissions($permission);
+            }
+    
+            return $model->update($payload);
+        } catch (\Throwable $th) {
+            $this->sendReportLog('error', $th->getMessage());
+            
+            return false;
         }
-
-        $model = $this->findById($modelId);
-
-        if ($permission) {
-            $model->syncPermissions($permission);
-        }
-
-        return $model->update($payload);
     }
 }

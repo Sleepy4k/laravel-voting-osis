@@ -3,12 +3,9 @@
 namespace App\Services;
 
 use App\Contracts\Models;
-use App\Traits\UploadFile;
 
 class Service
 {
-    use UploadFile;
-
     /**
      * @var userInterface
      */
