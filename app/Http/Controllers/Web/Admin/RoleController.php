@@ -22,6 +22,15 @@ class RoleController extends WebController
         $this->createView = 'pages.admin.role.create';
         $this->showView = 'pages.admin.role.show';
         $this->editView = 'pages.admin.role.edit';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:role.index'], ['only' => ['index']]);
+        $this->middleware(['permission:role.create'], ['only' => ['create']]);
+        $this->middleware(['permission:role.store'], ['only' => ['store']]);
+        $this->middleware(['permission:role.show'], ['only' => ['show']]);
+        $this->middleware(['permission:role.edit'], ['only' => ['edit']]);
+        $this->middleware(['permission:role.update'], ['only' => ['update']]);
+        $this->middleware(['permission:role.delete'], ['only' => ['delete']]);
     }
 
     /**

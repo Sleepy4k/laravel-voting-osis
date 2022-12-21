@@ -22,6 +22,15 @@ class TranslateController extends WebController
         $this->createView = 'pages.system.translate.create';
         $this->showView = 'pages.system.translate.show';
         $this->editView = 'pages.system.translate.edit';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:translate.index'], ['only' => ['index']]);
+        $this->middleware(['permission:translate.create'], ['only' => ['create']]);
+        $this->middleware(['permission:translate.store'], ['only' => ['store']]);
+        $this->middleware(['permission:translate.show'], ['only' => ['show']]);
+        $this->middleware(['permission:translate.edit'], ['only' => ['edit']]);
+        $this->middleware(['permission:translate.update'], ['only' => ['update']]);
+        $this->middleware(['permission:translate.delete'], ['only' => ['delete']]);
     }
 
     /**

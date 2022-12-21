@@ -17,6 +17,10 @@ class AuthController extends WebController
     {
         $this->indexView = 'pages.audit.auth.index';
         $this->showView = 'pages.audit.auth.show';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:auth.index'], ['only' => ['index']]);
+        $this->middleware(['permission:auth.show'], ['only' => ['show']]);
     }
 
     /**

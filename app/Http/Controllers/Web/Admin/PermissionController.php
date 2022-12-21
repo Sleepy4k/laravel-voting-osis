@@ -22,6 +22,15 @@ class PermissionController extends WebController
         $this->createView = 'pages.admin.permission.create';
         $this->showView = 'pages.admin.permission.show';
         $this->editView = 'pages.admin.permission.edit';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:permission.index'], ['only' => ['index']]);
+        $this->middleware(['permission:permission.create'], ['only' => ['create']]);
+        $this->middleware(['permission:permission.store'], ['only' => ['store']]);
+        $this->middleware(['permission:permission.show'], ['only' => ['show']]);
+        $this->middleware(['permission:permission.edit'], ['only' => ['edit']]);
+        $this->middleware(['permission:permission.update'], ['only' => ['update']]);
+        $this->middleware(['permission:permission.delete'], ['only' => ['delete']]);
     }
 
     /**

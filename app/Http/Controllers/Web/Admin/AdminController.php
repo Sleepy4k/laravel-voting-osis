@@ -9,6 +9,16 @@ use App\Http\Requests\Web\Admin\Admin\ImportRequest;
 class AdminController extends WebController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Reset user voting status
      *
      * @param  \App\Services\Web\Admin\AdminService  $service

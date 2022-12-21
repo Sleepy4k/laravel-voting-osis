@@ -17,6 +17,10 @@ class ModelController extends WebController
     {
         $this->indexView = 'pages.audit.model.index';
         $this->showView = 'pages.audit.model.show';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:model.index'], ['only' => ['index']]);
+        $this->middleware(['permission:model.show'], ['only' => ['show']]);
     }
 
     /**

@@ -22,6 +22,15 @@ class MenuController extends WebController
         $this->createView = 'pages.system.menu.create';
         $this->showView = 'pages.system.menu.show';
         $this->editView = 'pages.system.menu.edit';
+        
+        $this->middleware('auth');
+        $this->middleware(['permission:menu.index'], ['only' => ['index']]);
+        $this->middleware(['permission:menu.create'], ['only' => ['create']]);
+        $this->middleware(['permission:menu.store'], ['only' => ['store']]);
+        $this->middleware(['permission:menu.show'], ['only' => ['show']]);
+        $this->middleware(['permission:menu.edit'], ['only' => ['edit']]);
+        $this->middleware(['permission:menu.update'], ['only' => ['update']]);
+        $this->middleware(['permission:menu.delete'], ['only' => ['delete']]);
     }
 
     /**
