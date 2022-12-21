@@ -8,6 +8,18 @@ use App\Http\Controllers\ApiController;
 class UserController extends ApiController
 {
     /**
+     * Instantiate a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:sanctum');
+        $this->middleware(['permission:user.index'], ['only' => ['index']]);
+        $this->middleware(['permission:user.show'], ['only' => ['show']]);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Services\Api\Main\UserService  $service
