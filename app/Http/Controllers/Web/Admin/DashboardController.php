@@ -15,6 +15,9 @@ class DashboardController extends WebController
     public function __construct()
     {
         $this->indexView = 'pages.admin.dashboard';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:dashboard.index'], ['only' => ['index']]);
     }
 
     /**

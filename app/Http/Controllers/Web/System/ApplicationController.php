@@ -18,6 +18,15 @@ class ApplicationController extends WebController
         $this->routeName = 'admin.system.application.index';
         $this->indexView = 'pages.system.application.index';
         $this->createView = 'pages.system.application.create';
+        
+        $this->middleware('auth');
+        $this->middleware(['permission:application.index'], ['only' => ['index']]);
+        $this->middleware(['permission:application.create'], ['only' => ['create']]);
+        $this->middleware(['permission:application.store'], ['only' => ['store']]);
+        $this->middleware(['permission:application.show'], ['only' => ['show']]);
+        $this->middleware(['permission:application.edit'], ['only' => ['edit']]);
+        $this->middleware(['permission:application.update'], ['only' => ['update']]);
+        $this->middleware(['permission:application.delete'], ['only' => ['delete']]);
     }
 
     /**

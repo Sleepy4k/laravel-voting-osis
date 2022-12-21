@@ -22,6 +22,15 @@ class CandidateController extends WebController
         $this->createView = 'pages.admin.candidate.create';
         $this->showView = 'pages.admin.candidate.show';
         $this->editView = 'pages.admin.candidate.edit';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:candidate.index'], ['only' => ['index']]);
+        $this->middleware(['permission:candidate.create'], ['only' => ['create']]);
+        $this->middleware(['permission:candidate.store'], ['only' => ['store']]);
+        $this->middleware(['permission:candidate.show'], ['only' => ['show']]);
+        $this->middleware(['permission:candidate.edit'], ['only' => ['edit']]);
+        $this->middleware(['permission:candidate.update'], ['only' => ['update']]);
+        $this->middleware(['permission:candidate.delete'], ['only' => ['delete']]);
     }
 
     /**

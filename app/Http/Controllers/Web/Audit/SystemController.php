@@ -18,6 +18,10 @@ class SystemController extends WebController
     {
         $this->indexView = 'pages.audit.system.index';
         $this->showView = 'pages.audit.system.show';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:system.index'], ['only' => ['index']]);
+        $this->middleware(['permission:system.show'], ['only' => ['show']]);
     }
 
     /**

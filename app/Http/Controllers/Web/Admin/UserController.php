@@ -22,6 +22,15 @@ class UserController extends WebController
         $this->createView = 'pages.admin.user.create';
         $this->showView = 'pages.admin.user.show';
         $this->editView = 'pages.admin.user.edit';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:user.index'], ['only' => ['index']]);
+        $this->middleware(['permission:user.create'], ['only' => ['create']]);
+        $this->middleware(['permission:user.store'], ['only' => ['store']]);
+        $this->middleware(['permission:user.show'], ['only' => ['show']]);
+        $this->middleware(['permission:user.edit'], ['only' => ['edit']]);
+        $this->middleware(['permission:user.update'], ['only' => ['update']]);
+        $this->middleware(['permission:user.delete'], ['only' => ['delete']]);
     }
 
     /**

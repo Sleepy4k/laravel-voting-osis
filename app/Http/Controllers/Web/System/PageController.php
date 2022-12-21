@@ -22,6 +22,15 @@ class PageController extends WebController
         $this->createView = 'pages.system.page.create';
         $this->showView = 'pages.system.page.show';
         $this->editView = 'pages.system.page.edit';
+        
+        $this->middleware('auth');
+        $this->middleware(['permission:page.index'], ['only' => ['index']]);
+        $this->middleware(['permission:page.create'], ['only' => ['create']]);
+        $this->middleware(['permission:page.store'], ['only' => ['store']]);
+        $this->middleware(['permission:page.show'], ['only' => ['show']]);
+        $this->middleware(['permission:page.edit'], ['only' => ['edit']]);
+        $this->middleware(['permission:page.update'], ['only' => ['update']]);
+        $this->middleware(['permission:page.delete'], ['only' => ['delete']]);
     }
 
     /**

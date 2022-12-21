@@ -16,6 +16,8 @@ class LogoutController extends WebController
     public function __construct()
     {
         $this->routeName = 'main.dashboard.index';
+        
+        $this->middleware('auth');
     }
 
     /**

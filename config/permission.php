@@ -161,52 +161,185 @@ return [
 
     'seeder' => [
         'list' => [
-            'account.index',
-            'account.store',
-            'account.show',
-            'account.update',
-            'account.destroy',
+            'candidate.index',
+            'candidate.create',
+            'candidate.store',
+            'candidate.show',
+            'candidate.edit',
+            'candidate.update',
+            'candidate.destroy',
+
+            'permission.index',
+            'permission.create',
+            'permission.store',
+            'permission.show',
+            'permission.edit',
+            'permission.update',
+            'permission.destroy',
+
+            'role.index',
+            'role.create',
+            'role.store',
+            'role.show',
+            'role.edit',
+            'role.update',
+            'role.destroy',
+
+            'user.index',
+            'user.create',
+            'user.store',
+            'user.show',
+            'user.edit',
+            'user.update',
+            'user.destroy',
+
+            'menu.index',
+            'menu.create',
+            'menu.store',
+            'menu.show',
+            'menu.edit',
+            'menu.update',
+            'menu.destroy',
+
+            'page.index',
+            'page.create',
+            'page.store',
+            'page.show',
+            'page.edit',
+            'page.update',
+            'page.destroy',
+
+            'translate.index',
+            'translate.create',
+            'translate.store',
+            'translate.show',
+            'translate.edit',
+            'translate.update',
+            'translate.destroy',
 
             'application.index',
-            'application.update',
+            'application.create',
+            'application.store',
 
-            'query.index',
-            'system.index',
             'auth.index',
             'auth.show',
+
             'model.index',
-            'model.show'
+            'model.show',
+
+            'query.index',
+            'query.show',
+
+            'system.index',
+            'system.show',
+
+            'dashboard.index',
+            'dashboard.store'
         ],
         'role' => [
             'superadmin' => [
-                'account.index',
-                'account.store',
-                'account.show',
-                'account.update',
-                'account.destroy',
+                'candidate.index',
+                'candidate.create',
+                'candidate.store',
+                'candidate.show',
+                'candidate.edit',
+                'candidate.update',
+                'candidate.destroy',
+    
+                'permission.index',
+                'permission.create',
+                'permission.store',
+                'permission.show',
+                'permission.edit',
+                'permission.update',
+                'permission.destroy',
+    
+                'role.index',
+                'role.create',
+                'role.store',
+                'role.show',
+                'role.edit',
+                'role.update',
+                'role.destroy',
+    
+                'user.index',
+                'user.create',
+                'user.store',
+                'user.show',
+                'user.edit',
+                'user.update',
+                'user.destroy',
+    
+                'menu.index',
+                'menu.create',
+                'menu.store',
+                'menu.show',
+                'menu.edit',
+                'menu.update',
+                'menu.destroy',
+    
+                'page.index',
+                'page.create',
+                'page.store',
+                'page.show',
+                'page.edit',
+                'page.update',
+                'page.destroy',
+    
+                'translate.index',
+                'translate.create',
+                'translate.store',
+                'translate.show',
+                'translate.edit',
+                'translate.update',
+                'translate.destroy',
     
                 'application.index',
-                'application.update',
+                'application.create',
+                'application.store',
     
-                'query.index',
-                'system.index',
                 'auth.index',
                 'auth.show',
+    
                 'model.index',
-                'model.show'
+                'model.show',
+    
+                'query.index',
+                'query.show',
+    
+                'system.index',
+                'system.show',
+    
+                'dashboard.index'
             ],
             'admin' => [
-                'account.index',
-                'account.store',
-                'account.show',
-                'account.update',
-                'account.destroy',
+                'candidate.index',
+                'candidate.create',
+                'candidate.store',
+                'candidate.show',
+                'candidate.edit',
+                'candidate.update',
+                'candidate.destroy',
+                
+                'user.index',
+                'user.create',
+                'user.store',
+                'user.show',
+                'user.edit',
+                'user.update',
+                'user.destroy',
     
-                'application.index',
-                'application.update'
+                'dashboard.index'
             ],
             'user' => [
-                'application.index'
+                'candidate.index',
+                'candidate.show',
+
+                'user.index',
+                'user.show',
+
+                'dashboard.index',
+                'dashboard.store'
             ]
         ]
     ]

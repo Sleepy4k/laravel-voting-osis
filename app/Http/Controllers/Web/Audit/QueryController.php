@@ -18,6 +18,10 @@ class QueryController extends WebController
     {
         $this->indexView = 'pages.audit.query.index';
         $this->showView = 'pages.audit.query.show';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:query.index'], ['only' => ['index']]);
+        $this->middleware(['permission:query.show'], ['only' => ['show']]);
     }
 
     /**

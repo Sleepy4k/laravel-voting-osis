@@ -17,6 +17,10 @@ class DashboardController extends WebController
     {
         $this->indexView = 'pages.user.dashboard';
         $this->createView = 'pages.user.success';
+
+        $this->middleware('auth');
+        $this->middleware(['permission:dashboard.index'], ['only' => ['index']]);
+        $this->middleware(['permission:dashboard.store'], ['only' => ['store']]);
     }
 
     /**

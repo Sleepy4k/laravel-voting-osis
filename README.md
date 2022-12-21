@@ -4,14 +4,14 @@ Voting Osis
 
 ## Description
 
-Laravel voting osis
+Laravel voting osis with laravel 9 and use mazer admin dashboard
 
 ## Getting Started
 
 ### Dependencies
 
 * Composer
-* Php >= 8
+* Php >= 8.1
 * Mysql
 * Internet
 
@@ -44,9 +44,17 @@ Generate hyper link from storage folder to public folder
 
     php artisan storage:link
 
+Install node dependencies
+
+    npm install
+
 Run the database migrations (**Set the database connection in .env before migrating**)
 
     php artisan migrate:fresh --seed
+
+Run node server development server
+
+    npm run dev
 
 Start the local development server
 
@@ -62,10 +70,12 @@ You can now access the server at http://localhost:8000
     cp .env.example .env
     php artisan key:generate
     php artisan storage:link
+    npm install
     
 **Make sure you set the correct database connection information before running the migrations**
 
     php artisan migrate:fresh --seed
+    npm run dev
     php artisan serve
 
 ## Help
@@ -83,6 +93,10 @@ Contributors names and contact info
 
 ## Version History
 
+* 1.0.0-beta
+    * complete dashboard admin
+    * add base api for third party app
+    * fix validation
 * 1.0.0-alpha
     * initial release
     * add main feature
